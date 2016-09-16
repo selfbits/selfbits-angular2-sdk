@@ -18,7 +18,7 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 
 - [Installation](#installation)
 - [Setup](#setup)
-	- [Setup via ngModule](#setup-ngmodule)
+	- [Setup via ngModule](#setup-ngmodule-(since-rc5))
     - [Setup via bootstrap](#setup-bootstrap)
 - [Usage](#usage)
 	- [Usage in Components](#usage-component)
@@ -52,9 +52,9 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 npm install selfbits-angular2-sdk --save
 ```
 
-## <a id="setup"></a> Setup
+##  Setup
 
-### <a id="setup-ngmodule"></a> Setup via ngModule (since RC5)
+### Setup via ngModule (since RC5)
 ```javascript
 
 import {SelfbitsAngularModule} from 'selfbits-angular2-sdk';
