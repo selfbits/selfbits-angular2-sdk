@@ -46,7 +46,7 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 - [License](#license)
 
 
-## <a id="installation"></a> Installation
+## Installation
 
 ```
 npm install selfbits-angular2-sdk --save
