@@ -25,22 +25,22 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 	- [Usage in Services](#usage-in-services)
 - [API Reference](#api-reference)
 	- [SelfbitsAngular: auth](#selfbitsangular-auth)
-		- [auth.login(authData)](#auth.login)
-		- [auth.signup(authData)](#auth.signup)
-		- [auth.social(providerName)](#auth-social-providerName)
-		- [auth.unlink(providerName)](#auth.unlink)
-		- [auth.password(newPassword, oldPassword)](#auth.password)
-		- [auth.logout()](#auth.logout)
-		- [auth.getUserId()](#auth.getuserid)
-		- [auth.isAuthenticated()](#auth.isauthenticated)
-		- [auth.signupAnonymous()](#auth.signupanonymous)
-	- [SelfbitsAngular: database](#database)
-		- [database.databaseSchema(tableName)](#database.databaseSchema)
-	- [SelfbitsAngular: file](#file)
-		- [file.get(params)](#file.get)
-		- [file.upload(params)](#file.upload)
-	- [SelfbitsAngular: user](#user)
-		- [user.current()](#user.current)
+		- [auth.login(authData)](#authloginauthdata)
+		- [auth.signup(authData)](#authsignupauthdata)
+		- [auth.social(providerName)](#authsocialprovidername)
+		- [auth.unlink(providerName)](#authunlinkprovidername)
+		- [auth.password(newPassword, oldPassword)](#authpasswordnewpasswordstring-oldpasswordstring)
+		- [auth.logout()](#authlogout)
+		- [auth.getUserId()](#authgetuserid)
+		- [auth.isAuthenticated()](#authisauthenticated)
+		- [auth.signupAnonymous()](#authsignupanonymous)
+	- [SelfbitsAngular: database](#selfbitsangular-database)
+		- [database.databaseSchema(tableName)](#databasedatabaseschematablename)
+	- [SelfbitsAngular: file](#selfbitsangular-file)
+		- [file.get(params)](#filegetparams)
+		- [file.upload(params)](#fileuploadparams)
+	- [SelfbitsAngular: user](#selfbitsangular-user)
+		- [user.current()](#usercurrent)
 	- [device](#device)
 		- [device.sync()](#device.sync)
 - [License](#license)
@@ -356,7 +356,7 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-#### <a id="auth.password"></a> `auth.password(newPassword:string, oldPassword?:string)`
+### auth.password(newPassword, oldPassword?)
 
 Allows users  to update password or create one, if the user used social auth. 
 You have to make sure to make necessary sanity checks for the new password (e.g. password repeat, password strength).
@@ -694,7 +694,6 @@ constructor(private sb: SelfbitsAngular) {
 
 
 ### `SelfbitsAngular: user`
-
 
 ### user.current()
 
