@@ -18,11 +18,11 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 
 - [Installation](#installation)
 - [Setup](#setup)
-	- [Setup via ngModule](#setup-via-ngmodule-(since-rc5))
-    - [Setup via bootstrap](#setup-bootstrap)
+	- [Setup via ngModule](#setup-via-ngmodule-since-rc5)
+    - [Setup via bootstrap](#setup-via-boostrap-before-rc5)
 - [Usage](#usage)
-	- [Usage in Components](#usage-component)
-	- [Usage in Serices](#usage-services)
+	- [Usage in Components](#usage-in-components)
+	- [Usage in Services](#usage-in-services)
 - [API Reference](#api)
 	- [SelfbitsAngular: auth](#auth)
 		- [auth.login(authData)](#auth.login)
@@ -83,7 +83,7 @@ export class AppModule { }
 
 ```
 
-### <a id="setup-ngmodule"></a> Setup via boostrap (before RC5)
+### Setup via boostrap (before RC5)
 ```javascript
 
 import {SelfbitsSetup, SELFBITS_PROVIDERS} from 'selfbits-angular2-sdk';
@@ -109,11 +109,11 @@ bootstrap(
 );
 ```
 
-## <a id="usage"></a> Usage
+## Usage
 
 Note: Our sdk is designed, so that you can consume them directly inside your components. Of course feel free to wrap our methods in your own services!
 
-### <a id="usage-component"></a>Usage in Components
+### Usage in Components
 
 ```javascript
 
@@ -132,7 +132,7 @@ export class LoginComponent {
 }
 ```
 
-### <a id="usage-service"></a>Usage in Services
+### Usage in Services
 
 ```javascript
 import { Injectable } from '@angular/core'
