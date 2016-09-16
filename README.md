@@ -182,15 +182,13 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 
 Sign in using email and password.
 
-
+##### Parameters
 |Param | Type | Details|
 |------|------ | ------|
 |authData| `Object` | `{email:string, password:string}`|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 #### Usage
@@ -225,15 +223,13 @@ Sign up using email and password.
 * __Note__ Our Backend accepts only email and password properties for basic signup, everything else will be ignored
 Don't forget to use angulars formbuilder to perform basic validations!
 
-
+##### Parameters
 |Param | Type | Details|
 |------|------ | ------|
 |authData| `Object` | `{email:string, password:string}`|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 ##### Usage
 
@@ -262,10 +258,8 @@ constructor(private sb: SelfbitsAngular) {
 
 Signup as anonymous user
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Usage
@@ -292,15 +286,13 @@ Sign in __OR__ up using social providers. Opens a popup window, that leads the u
 
 __Note__ Selfbits handles the complete OAuth flow in our backend. Please follow the Setup Guide in your Project > Authentication > Auth Provider
 
-
+##### Parameters
 |Param | Type | Details|
 |------|------ | ------|
 |providerName|`string`| String with the Providername in lowercase, e.g. 'facebook' or 'github'|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Usage
@@ -327,15 +319,13 @@ constructor(private sb: SelfbitsAngular) {
 Unlink social providers from a user profile, so it become linkable from other accounts.
 Does __NOT__ remove authentication rights from provider itself.
 
-
+##### Parameters
 |Param | Type | Details|
 |------|------ | ------|
 |providerName|`string`| String with the Providername in lowercase, e.g. 'facebook' or 'github'|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 ##### Usage
 
@@ -369,10 +359,8 @@ You have to make sure to make necessary sanity checks for the new password (e.g.
 |newPassword| `string` | The new password|
 |oldPassword (optional)| `string` | The existing password (only required if a password already exists)|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Usage
@@ -456,14 +444,15 @@ Create a database object with CRUD Methods on the fly
 Returns an instance of a SbHttp with CRUD Methods. 
 Create by passing the SchemaId of your Collection on Selfbits.
 
+##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
 |tableName| `string` | Name of the table/collection you want to query|
 
 
-|Return|Type|Details|
-|------|------ | ------|
-|Object|SbHttp|Includes CRUD Methods (see below)|
+##### Returns
+- **Object** - with CRUD Methods
+
 
 ##### Usage
 
@@ -489,38 +478,38 @@ get single item by ID, with optional params __deep__ and __meta__ booleans.
 __deep__ When set to true, referenced children objects are fetched
 __meta__ When set to true, shows timestamp and version metadata
 
+##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
 |getParams| `Object` | `GetParams {id: any,deep?: boolean,meta?: boolean}`|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 ####  query(queryParams?)
 
 Get all items with optional mongoose filter as well as __deep__ and __meta__ booleans.
 If no params are sent, then all items are fetched according to user roles settings.
 
+##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
 |(Optional) queryParams| `Object` | `GetParams pageSize?: number,pageNumber?: number,filter?: string,sort?: string,deep?: boolean,meta?: boolean`|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 #### post(data)
 
 Post data to the collection specified according to the created database.Schema('collectionName') instance.
 
+##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
 |data| `Object` | according to collection created|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 #### put(data,id)
 
@@ -531,21 +520,20 @@ Update specific item according to id and replaces it with the data sent.
 |data| `Object` | according to collection created|
 |id|`string`|id of item to be updated|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 #### delete(id)
 
 Removes item with specific id from collection.
 
+##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
 |id|`string`|id of item to be deleted|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Example Todo
@@ -613,16 +601,15 @@ constructor(private sb:SelfbitsAngular){
 ### file.get(params)
 Get metadata of an uploaded file that contains a temporary download link.
 
-
+##### Parameters
 |Param | Type | required | default | Details|
 |-------|----- | -------|------|------|
 |params| `Object` | true | | JavaScript object|
 |params.fieldId | `string` | true | | JavaScript object|
 |params.expiresInSeconds| `number` | false | 900 | JavaScript object|
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`| returns file metadata object containing url and expiresAt from the server|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Usage
@@ -654,7 +641,7 @@ constructor(private sb: SelfbitsAngular) {
 
 Upload a file to the authenticated user's file store. Unified function that initiates, executes and verifies the upload.
 
-
+##### Parameters
 |Param	|Type	|required	|default|	Details|
 |----|----|---- | -------|------|
 |params	| `Object`	|true	|	|JavaScript object containing upload information|
@@ -662,10 +649,8 @@ Upload a file to the authenticated user's file store. Unified function that init
 |params.filePath	| `string`|	false	|params.file.name|	The destination path where you want to put the file. This path is prefixed by <PROJECT-ID>/<USER-ID>/|
 |params.permissionScope	| `string`	|false	|user	|The permission scope: 'user' = only the uploading user can access the file. ' * ' : Every authenticated user can access the file with its fileId.|
 
-
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`| returns file metadata object from the server|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 
 ##### Usage
@@ -697,9 +682,8 @@ constructor(private sb: SelfbitsAngular) {
 
 ### user.current()
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 ##### Usage
 ```js
@@ -726,9 +710,8 @@ constructor(private sb: SelfbitsAngular) {
 
 If an user is authenticeted this function will post user's mobile device informations to selfbits.
 
-|Return|Type|Details|
-|------|------ | ------|
-|Observable|`Response`|Use toPromise() to transform to promise|
+##### Returns
+- **response** - The HTTP response object from the server.
 
 ##### Usage
 ```js
