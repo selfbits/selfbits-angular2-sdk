@@ -112,7 +112,7 @@ describe('auth.ts',()=> {
 			auth.login(user);
 			auth.signup(user);
 			auth.unlink('selfbits');
-			auth.changePassword('newPassword','oldPassword');
+			auth.password('newPassword','oldPassword');
 		}));
 
 		it('login() should work and set token', fakeAsync(() => {
@@ -184,7 +184,7 @@ describe('auth.ts',()=> {
 			expect(window.localStorage.getItem('expires')).toEqual('fancyExpiration');
 		}));
 
-		it('changePassword() should change password if user is logged and token exists',  fakeAsync(() => {
+		it('password() should change password if user is logged and token exists',  fakeAsync(() => {
 
 			backend.connections.subscribe((connection: MockConnection) => {
 				expect(connection.request.method).toBe(RequestMethod.Post);
@@ -202,7 +202,7 @@ describe('auth.ts',()=> {
 				oldPassword: 'oldPassword'
 			};
 
-			auth.changePassword(changePassword.newPassword, changePassword.oldPassword).subscribe(res => {
+			auth.password(changePassword.newPassword, changePassword.oldPassword).subscribe(res => {
 				response = res.json();
 			});
 
