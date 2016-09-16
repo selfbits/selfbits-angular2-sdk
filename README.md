@@ -165,7 +165,7 @@ export class TodoDatabaseService {
 import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 ```
 
-### <a id="auth"></a> `SelfbitsAngular: auth`
+### `SelfbitsAngular: auth`
 
 - [auth.login(authData)](#auth.login)
 - [auth.signup(authData)](#auth.signup)
@@ -178,7 +178,7 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 - [auth.signupAnonymous()](#auth.signupanonymous)
 
 
-#### <a id="auth.login"></a> `auth.login(authData) : Observable<Response>`
+### <a id="auth.login"></a> `auth.login(authData) : Observable<Response>`
 
 Sign in using email and password.
 
@@ -218,7 +218,7 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-#### <a id="auth.signup"></a> `auth.signup(authData) : Observable<Response>`
+### <a id="auth.signup"></a> `auth.signup(authData) : Observable<Response>`
 
 Sign up using email and password. 
 
@@ -258,7 +258,7 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-#### <a id="auth.signupanonymous"></a> `auth.signupAnonymous()`
+### <a id="auth.signupanonymous"></a> `auth.signupAnonymous()`
 
 Signup as anonymous user
 
