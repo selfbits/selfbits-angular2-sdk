@@ -473,25 +473,79 @@ public todoDb;
 constructor(private sb:SelfbitsAngular){
 	this.todoDb = this.sb.database.databaseSchema('todo');
 	
-	this.todoDb.get(getParams);
-	this.todoDb.query(params?);
-	this.todoDb.post(todo);
-	this.todoDb.put(todo, id);
-	this.todoDb.delete(id);
+	this.todoDb.get(getParams).subscribe();
+	this.todoDb.query(params?).subscribe();
+	this.todoDb.post(todo).subscribe();
+	this.todoDb.put(todo, id).subscribe();
+	this.todoDb.delete(id).subscribe();
 }
 ```
 
 
-#### get(params)
+#### get(getParams)
+
+get single item by ID, with optional params __deep__ and __meta__ booleans.
+
+__deep__ When set to true, referenced children objects are fetched
+__meta__ When set to true, shows timestamp and version metadata
 
 |Param | Type | Details|
 |------|------ | -------------|
-|getParams| `Object` | `GetParams {
-                       	id: any,
-                       	deep?: boolean,
-                       	meta?: boolean
-                       }`|
+|getParams| `Object` | `GetParams {id: any,deep?: boolean,meta?: boolean}`|
 
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
+
+####  query(queryParams?)
+
+Get all items with optional mongoose filter as well as __deep__ and __meta__ booleans.
+If no params are sent, then all items are fetched according to user roles settings.
+
+|Param | Type | Details|
+|------|------ | -------------|
+|(Optional) queryParams| `Object` | `GetParams pageSize?: number,pageNumber?: number,filter?: string,sort?: string,deep?: boolean,meta?: boolean`|
+
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
+
+#### post(data)
+
+Post data to the collection specified according to the created database.Schema('collectionName') instance.
+
+|Param | Type | Details|
+|------|------ | -------------|
+|data| `Object` | according to collection created|
+
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
+
+#### put(data,id)
+
+Update specific item according to id and replaces it with the data sent.
+
+|Param | Type | Details|
+|------|------ | -------------|
+|data| `Object` | according to collection created|
+|id|`string`|id of item to be updated|
+
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
+
+#### delete(id)
+
+Removes item with specific id from collection.
+
+|Param | Type | Details|
+|------|------ | -------------|
+|id|`string`|id of item to be deleted|
+
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 
 ##### Usage
