@@ -417,7 +417,7 @@ Returns the ID as String of the logged-in user from localStorage
 
 constructor(private sb: SelfbitsAngular) {
 
-this.sb.auth.getUserId();
+	this.sb.auth.getUserId();
 
 }
 ```
@@ -446,35 +446,53 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-### <a id="database"></a> `SelfbitsAngular: database`
+### `SelfbitsAngular: database`
+
+Create a database object with CRUD Methods on the fly
+
+
+### database.databaseSchema(tableName)
+
+Returns an instance of a SbHttp with CRUD Methods. 
+Create by passing the SchemaId of your Collection on Selfbits.
+
+|Param | Type | Details|
+|------|------ | -------------|
+|tableName| `string` | Name of the table/collection you want to query|
+
+
+|Return|Type|Details|
+|------|------ | ------|
+|Object|SbHttp|Includes CRUD Methods (see below)|
+
+##### Usage
 
 ```js
-#creating a SelfbitsDatabaseObject
- database.databaseSchema(tableName)
+public todoDb;
 
-#using methods on the SelfbitsDatabaseObject
- dbObject.post(data)
- dbObject.get(params)
- dbObject.query(params)
- dbObject.put(data,id)
- dbObject.delete(id)
+constructor(private sb:SelfbitsAngular){
+	this.todoDb = this.sb.database.databaseSchema('todo');
+	
+	this.todoDb.get(getParams);
+	this.todoDb.query(params?);
+	this.todoDb.post(todo);
+	this.todoDb.put(todo, id);
+	this.todoDb.delete(id);
+}
 ```
 
 
-#### <a id="database.databaseSchema"></a> `database.databaseSchema(tableName)`
+#### get(params)
 
-Select a table/collection you previously defined in the Admin Dashboard to run operations on it.
+|Param | Type | Details|
+|------|------ | -------------|
+|getParams| `Object` | `GetParams {
+                       	id: any,
+                       	deep?: boolean,
+                       	meta?: boolean
+                       }`|
 
-##### Parameters
 
-Param | Type | Details
------------- | -------------
-tableName| `string` | Name of the table/collection you want to query
-
-
-##### Returns
-
-returns a SelfbitsDatabaseObject with that you can access to further functionalities
 
 ##### Usage
 
