@@ -693,61 +693,59 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-### <a id="user"></a> `SelfbitsAngular: user`
+### `SelfbitsAngular: user`
 
 
-#### <a id="user.current"></a> `user.current()`
+### user.current()
 
-
-
-##### Returns
-
-* __response__ the HTTP response object from the server
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 ##### Usage
 ```js
 
-constructor(private sb: SelfbitsAngular) {}
+constructor(private sb: SelfbitsAngular) {
 
-this.sb.user.current().subscribe(
-  res => {
-    if (res.status === 200){
-      // do something with the data
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
+	this.sb.user.current().subscribe(
+	  res => {
+	    if (res.status === 200){
+	      // do something with the data
+	    }
+	    else{
+	      // Handle errors here, such as displaying a notification
+	    }
+	  }
+	);
+}
 ```
 
-### <a id="device"></a> `SelfbitsAngular: device`
+### `SelfbitsAngular: device`
 
 
-#### <a id="device.sync"></a> `device.sync()`
+### device.sync()
 
-If an user is authenticeted this function will post user device informations to selfbits.
+If an user is authenticeted this function will post user's mobile device informations to selfbits.
 
-##### Returns
-
-* __response__ the HTTP response object from the server
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 ##### Usage
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
+constructor(private sb: SelfbitsAngular) {
 
-
-this.sb.device.sync().subscribe(
-  res => {
-    if (res.status === 200){
-      // do something with the data
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
+	this.sb.device.sync().subscribe(
+	  res => {
+	    if (res.status === 200){
+	      // do something with the data
+	    }
+	    else{
+	      // Handle errors here, such as displaying a notification
+	    }
+	  }
+	);
+}
 ```
 
 
