@@ -6,8 +6,9 @@ import {TESTHEADERS, TESTURL, TESTCONFIG, TESTAUTHSUCESSRES} from "./helpers";
 import * as utils from '../src/utils/utils'
 import {SelfbitsAuth} from "../src/services/auth";
 import {SelfbitsAuthConfig} from "../src/utils/interfaces";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
-describe('http.ts',()=> {
+describe('auth.ts',()=> {
 
 	beforeEach(()=> {
 		TestBed.configureTestingModule({
@@ -19,7 +20,7 @@ describe('http.ts',()=> {
 						return new Http(backend, defaultOptions);
 					}, deps: [MockBackend, BaseRequestOptions]
 				},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsAuth
 			],
 			imports: [

@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { SelfbitsAppConfig } from '../utils/interfaces';
 
 import * as utils from '../utils/utils';
+import {SELFBITS_CONFIG} from "../utils/tokens";
 
 @Injectable()
 export class SelfbitsUser {
@@ -13,7 +14,7 @@ export class SelfbitsUser {
 	private headers: Headers;
 	private userPath = '/api/v1/user';
 
-	constructor( @Inject('SelfbitsConfig') private config: SelfbitsAppConfig, private http: Http) {
+	constructor( @Inject(SELFBITS_CONFIG) private config: SelfbitsAppConfig, private http: Http) {
 		this.baseUrl = utils.stripTrailingSlash(this.config.BASE_URL);
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');

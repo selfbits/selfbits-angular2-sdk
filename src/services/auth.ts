@@ -1,9 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import {Injectable, Inject, forwardRef} from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs';
 
 import * as utils from '../utils/utils'
 import { SelfbitsAppConfig, SelfbitsAuthConfig } from '../utils/interfaces';
+import {SELFBITS_CONFIG} from "../utils/tokens";
 
 declare var window:any;
 
@@ -20,7 +21,7 @@ export class SelfbitsAuth{
 	private socialPath= 'api/v1/oauth';
 	private interval = Observable.interval(500);
 
-	constructor(@Inject('SelfbitsConfig') private config:SelfbitsAppConfig, private http:Http){
+	constructor(@Inject(SELFBITS_CONFIG) private config:SelfbitsAppConfig, private http:Http){
 		this.baseUrl = utils.stripTrailingSlash(this.config.BASE_URL);
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');

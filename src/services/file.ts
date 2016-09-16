@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { SelfbitsAppConfig, ExistingFile, UploadFile } from '../utils/interfaces';
 import * as utils from '../utils/utils'
+import {SELFBITS_CONFIG} from "../utils/tokens";
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class SelfbitsFile {
 	private headers: Headers;
 	private filePath = '/api/v1/file';
 
-	constructor( @Inject('SelfbitsConfig') private config: SelfbitsAppConfig, private http: Http) {
+	constructor( @Inject(SELFBITS_CONFIG) private config: SelfbitsAppConfig, private http: Http) {
 		this.baseUrl = utils.stripTrailingSlash(config.BASE_URL);
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');

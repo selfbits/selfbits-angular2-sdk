@@ -3,6 +3,7 @@ import {MockBackend, MockConnection} from "@angular/http/testing";
 import {BaseRequestOptions, Http, HttpModule, RequestMethod, ResponseOptions, Response} from "@angular/http";
 import {TESTCONFIG, TESTURL} from "./helpers";
 import {SelfbitsUser} from "../src/services/user";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 
 describe('user.ts',()=> {
@@ -17,7 +18,7 @@ describe('user.ts',()=> {
 					return new Http(backend, defaultOptions);
 				}, deps: [MockBackend, BaseRequestOptions]
 				},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsUser
 			],
 			imports: [

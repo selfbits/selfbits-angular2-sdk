@@ -3,6 +3,7 @@ import {HttpModule} from "@angular/http";
 
 import {SelfbitsDatabase} from "../src/services/database";
 import {TESTCONFIG, TESTHEADERS, TESTURL} from "./helpers";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 
 describe('database.ts', ()=>{
@@ -11,7 +12,7 @@ describe('database.ts', ()=>{
 		TestBed.configureTestingModule({
 			providers:[
 				SelfbitsDatabase,
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG}
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG}
 			],
 			imports:[HttpModule]
 		})
