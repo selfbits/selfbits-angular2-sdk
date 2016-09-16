@@ -18,12 +18,12 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 
 - [Installation](#installation)
 - [Setup](#setup)
-	- [Setup via ngModule](#setup-via-ngmodule-since-rc5)
-    - [Setup via bootstrap](#setup-via-boostrap-before-rc5)
+	- [Setup via ngModule](#setup-via-ngmodule-since-rc5-)
+    - [Setup via bootstrap](#setup-via-boostrap-before-rc5-)
 - [Usage](#usage)
 	- [Usage in Components](#usage-in-components)
 	- [Usage in Services](#usage-in-services)
-- [API Reference](#api)
+- [API Reference](#api-reference)
 	- [SelfbitsAngular: auth](#auth)
 		- [auth.login(authData)](#auth.login)
 		- [auth.signup(authData)](#auth.signup)
@@ -71,7 +71,6 @@ const SELFBITSCONFIG = {
 	APP_SECTRET:'yourSbAppSecret',
 };
 
-
 @NgModule({
 	imports: [
 		/* other imports */
@@ -111,7 +110,7 @@ bootstrap(
 
 ## Usage
 
-Note: Our sdk is designed, so that you can consume them directly inside your components. Of course feel free to wrap our methods in your own services!
+* __Note__: Our sdk is designed, so that you can consume them directly inside your components. 
 
 ### Usage in Components
 
@@ -133,6 +132,8 @@ export class LoginComponent {
 ```
 
 ### Usage in Services
+
+Of course feel free to wrap our methods in your own services!
 
 ```javascript
 import { Injectable } from '@angular/core'
@@ -157,7 +158,7 @@ export class TodoDatabaseService {
 }
 ```
 
-## <a id="api"></a> API Reference
+## API Reference
 
 ### Always import SelfbitsAngular
 ```javascript
