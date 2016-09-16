@@ -548,22 +548,17 @@ Removes item with specific id from collection.
 |Observable|`Response`|Use toPromise() to transform to promise|
 
 
-##### Usage
-
-The SelfbitsDatabaseObject is a powerful tool to manipulate data in the database in a REST-Style manner. Our API offers the get save, update and delete methods to retrieve and edit data in a specific table. Please read the linked docs to get a deeper understanding, as covering all the mechanics here is not possible. Despite, we provide a few examples to demonstrate what's possible.
+##### Example Todo
 
 ```js
-
-import {SelfbitsAngular} from "../../sdk/src/angularselfbits";
 
 //create a variable for a SelfbitsDatabaseObject
 todoDb;
 
 // Select the active database and bind the SelfbitsDatabaseObject to a variable
 constructor(private sb: SelfbitsAngular) {
-  this.todoDb = this.sb.database.databaseSchema('test');
+  this.todoDb = this.sb.database.databaseSchema('todo');
 }
-
 
 // retrieve all todos and bind them to a variable
 todos = this.todo.query();
@@ -596,8 +591,9 @@ this.todo.post(todo).subscribe(
 
 // update a todo object in the database
 let updateTodo = {
-    description: 'Please get cheap milk from Wholefoods'
+    description: 'Please get FRESH milk from Wholefoods'
 }
+
 this.todo.put(updateTodo,"57879806aeb310dc651899ef");
 
 // delete a todo object in the database
@@ -605,92 +601,95 @@ this.todo.delete("57879806aeb310dc651899ef");
 
 ```
 
-### <a id="file"></a> `SelfbitsAngular: file`
+### `SelfbitsAngular: file`
 
 ```js
-file.get(params)
-file.upload(params)
+constructor(private sb:SelfbitsAngular){
+	this.sb.file.get(params)
+	this.sb.file.upload(params)
+}
 ```
 
-#### <a id="file.get"></a> `file.get(params)`
+### file.get(params)
 Get metadata of an uploaded file that contains a temporary download link.
 
-#### Parameters
-Param | Type | required | default | Details
------------- | -------------
-params| `Object` | true | | JavaScript object
-params.fieldId | `string` | true | | JavaScript object
-params.expiresInSeconds| `number` | false | 900 | JavaScript object
 
+|Param | Type | required | default | Details|
+|-------|----- | -------|------|------|
+|params| `Object` | true | | JavaScript object|
+|params.fieldId | `string` | true | | JavaScript object|
+|params.expiresInSeconds| `number` | false | 900 | JavaScript object|
 
-#### Returns
-response the file metadata object containing url and expiresAt from the server
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`| returns file metadata object containing url and expiresAt from the server|
+
 
 ##### Usage
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
 
+constructor(private sb: SelfbitsAngular) {
 
-let params = {
-  fileId: 'YOUR-FILE-ID',
-  expiresInSeconds: 60
+	let params = {
+	  fileId: 'YOUR-FILE-ID',
+	  expiresInSeconds: 60
+	}
+	
+	this.file.get(params).subscribe(
+	  res => {
+	    if (res.status === 200){
+	      // do something with file metadata response
+	      let downloadLink = res.url;
+	      // use download link as long as it is valid
+	    }
+	    else{
+	      // Handle errors here, such as displaying a notification
+	    }
+	  }
+	);
 }
-
-this.file.get(params).subscribe(
-  res => {
-    if (res.status === 200){
-      // do something with file metadata response
-      let downloadLink = res.url;
-      // use download link as long as it is valid
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
  ```
 
-#### <a id="file.upload"></a> `file.upload(params)`
+### file.upload(params)
 
 Upload a file to the authenticated user's file store. Unified function that initiates, executes and verifies the upload.
 
-#### Parameters
 
-Param	|Type	|required	|default|	Details
------------- | -------------
-params	| `Object`	|true	|	|JavaScript object containing upload information
-params.file	| `file`	|true	|	| The file you want to upload
-params.filePath	| `string`|	false	|params.file.name|	The destination path where you want to put the file. This path is prefixed by <PROJECT-ID>/<USER-ID>/
-params.permissionScope	| `string`	|false	|user	|The permission scope: 'user' = only the uploading user can access the file. ' * ' : Every authenticated user can access the file with its fileId.
+|Param	|Type	|required	|default|	Details|
+|----|----|---- | -------|------|
+|params	| `Object`	|true	|	|JavaScript object containing upload information|
+|params.file	| `file`	|true	|	| The file you want to upload|
+|params.filePath	| `string`|	false	|params.file.name|	The destination path where you want to put the file. This path is prefixed by <PROJECT-ID>/<USER-ID>/|
+|params.permissionScope	| `string`	|false	|user	|The permission scope: 'user' = only the uploading user can access the file. ' * ' : Every authenticated user can access the file with its fileId.|
 
-#### Returns
 
-response the file metadata object from the server
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`| returns file metadata object from the server|
+
 
 ##### Usage
 ```js
 
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
+constructor(private sb: SelfbitsAngular) {
 
-
-let f = new File(["plain text file content"], "filename.txt")
-let params = {
-  file: f,
-  filePath: 'myFile.txt'
+	let f = new File(["plain text file content"], "filename.txt")
+	let params = {
+	  file: f,
+	  filePath: 'myFile.txt'
+	}
+	
+	this.sb.file.upload(params).subscribe(
+	  res => {
+	    if (res.status === 200){
+	      // do something with file metadata response
+	    }
+	    else{
+	      // Handle errors here, such as displaying a notification
+	    }
+	  }
+	);
 }
-this.sb.file.upload(params).subscribe(
-  res => {
-    if (res.status === 200){
-      // do something with file metadata response
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
-
 ```
 
 
