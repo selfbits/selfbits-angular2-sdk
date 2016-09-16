@@ -1,28 +1,32 @@
 {
 	"name": "selfbits-angular2-sdk",
 	"version": "1.0.0",
-	"description": "Connect to Selfbits Backen Services",
+	"description": "Connect to Selfbits Backend Services",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"directories": {
 		"test": "tests"
 	},
 	"scripts": {
-		"test": "karma start"
+		"test": "karma start",
+		"prepublish": "typings install && tsc"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/selfbits/selfbits-angular2-sdk.git"
+		"url": "https://github.com/selfbits/selfbits-angular2-sdk.git"
 	},
 	"keywords": [
-		"angular2"
+		"angular2", "selfbits", "typescript", "backend", "as", "a", "service", "oauth", "database", "social", "auth", "mongodb"
 	],
-	"author": "Han Che",
+	"author": {
+		"name": "Selfbits GmbH",
+		"url": "http://selfbits.io"
+	},
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/selfbits/selfbits-angular2-sdk/issues"
 	},
-  	"homepage": "https://github.com/selfbits/selfbits-angular2-sdk#readme",
+	"homepage": "https://github.com/selfbits/selfbits-angular2-sdk#readme",
 	"dependencies": {
 		"@angular/common": "2.0.0",
 		"@angular/compiler": "2.0.0",
