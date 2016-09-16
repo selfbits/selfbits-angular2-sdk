@@ -18,7 +18,7 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 
 - [Installation](#installation)
 - [Setup](#setup)
-	- [Setup via ngModule](#setup-ngmodule-(since-rc5))
+	- [Setup via ngModule](#setup-via-ngmodule-(since-rc5))
     - [Setup via bootstrap](#setup-bootstrap)
 - [Usage](#usage)
 	- [Usage in Components](#usage-component)
