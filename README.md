@@ -184,9 +184,9 @@ Sign in using email and password.
 
 ##### Parameters
 
-Param | Type | Details
------------- | -------------
-authData| `Object` | `{email:string, password:string}`
+|Param | Type | Details|
+|------|------ | ------|
+|authData| `Object` | `{email:string, password:string}`|
 
 
 ##### Returns
@@ -229,9 +229,9 @@ Don't forget to use angulars formbuilder to perform basic validations!
 
 ##### Parameters
 
-Param | Type | Details
------------- | -------------
-authData| `Object` | `{email:string, password:string}`
+|Param | Type | Details|
+|------|------ | ------|
+|authData| `Object` | `{email:string, password:string}`|
 
 
 ##### Returns
