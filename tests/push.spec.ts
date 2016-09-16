@@ -4,6 +4,7 @@ import {BaseRequestOptions, Http, HttpModule} from "@angular/http";
 import { TESTURL, TESTCONFIG} from "./helpers";
 
 import {SelfbitsPush} from "../src/services/push";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 declare var window:any;
 
@@ -17,7 +18,7 @@ describe('push.ts',()=>{
 				{ provide: Http, useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
 					return new Http(backend, defaultOptions);
 				}, deps: [MockBackend, BaseRequestOptions]},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsPush
 			],
 			imports: [

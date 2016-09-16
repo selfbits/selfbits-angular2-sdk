@@ -4,6 +4,7 @@ import { SelfbitsAppConfig } from '../utils/interfaces';
 
 import * as utils from '../utils/utils'
 import { Observable, Observer, Subject } from 'rxjs';
+import {SELFBITS_CONFIG} from "../utils/tokens";
 
 declare var window:any;
 
@@ -19,7 +20,7 @@ export class SelfbitsPush{
 	private headers = new Headers;
 	private pushRegistrationData:any;
 
-	constructor(@Inject('SelfbitsConfig') private config: SelfbitsAppConfig,private http:Http){
+	constructor(@Inject(SELFBITS_CONFIG) private config: SelfbitsAppConfig,private http:Http){
 		this.baseUrl = utils.stripTrailingSlash(this.config.BASE_URL);
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');

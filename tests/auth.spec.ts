@@ -6,8 +6,9 @@ import {TESTHEADERS, TESTURL, TESTCONFIG, TESTAUTHSUCESSRES} from "./helpers";
 import * as utils from '../src/utils/utils'
 import {SelfbitsAuth} from "../src/services/auth";
 import {SelfbitsAuthConfig} from "../src/utils/interfaces";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
-describe('http.ts',()=> {
+describe('auth.ts',()=> {
 
 	beforeEach(()=> {
 		TestBed.configureTestingModule({
@@ -19,7 +20,7 @@ describe('http.ts',()=> {
 						return new Http(backend, defaultOptions);
 					}, deps: [MockBackend, BaseRequestOptions]
 				},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsAuth
 			],
 			imports: [
@@ -111,7 +112,7 @@ describe('http.ts',()=> {
 			auth.login(user);
 			auth.signup(user);
 			auth.unlink('selfbits');
-			auth.changePassword('newPassword','oldPassword');
+			auth.password('newPassword','oldPassword');
 		}));
 
 		it('login() should work and set token', fakeAsync(() => {
@@ -183,7 +184,7 @@ describe('http.ts',()=> {
 			expect(window.localStorage.getItem('expires')).toEqual('fancyExpiration');
 		}));
 
-		it('changePassword() should change password if user is logged and token exists',  fakeAsync(() => {
+		it('password() should change password if user is logged and token exists',  fakeAsync(() => {
 
 			backend.connections.subscribe((connection: MockConnection) => {
 				expect(connection.request.method).toBe(RequestMethod.Post);
@@ -201,7 +202,7 @@ describe('http.ts',()=> {
 				oldPassword: 'oldPassword'
 			};
 
-			auth.changePassword(changePassword.newPassword, changePassword.oldPassword).subscribe(res => {
+			auth.password(changePassword.newPassword, changePassword.oldPassword).subscribe(res => {
 				response = res.json();
 			});
 

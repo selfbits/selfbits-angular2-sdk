@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {NgModule, ModuleWithProviders, OpaqueToken} from '@angular/core';
 import { Injectable } from '@angular/core';
 
 import {
@@ -13,6 +13,7 @@ import {
 import { SelfbitsAppConfig } from './utils/interfaces';
 
 import { HttpModule } from '@angular/http';
+import {SELFBITS_CONFIG} from "./utils/tokens";
 
 @Injectable()
 export class SelfbitsAngular {
@@ -39,9 +40,11 @@ export const SELFBITS_PROVIDERS:any[] = [
 
 export const SelfbitsSetup = (appConfig: SelfbitsAppConfig): any => {
 		return [
-			{ provide: 'SelfbitsConfig', useValue: appConfig }
+			{ provide: SELFBITS_CONFIG, useValue: appConfig }
 		]
 };
+
+
 
 // RC5+ using ngModule to load providers
 @NgModule({
@@ -54,7 +57,7 @@ export class SelfbitsAngularModule{
 		return {
 			ngModule:SelfbitsAngularModule,
 			providers:[
-				{ provide: 'SelfbitsConfig', useValue: config }
+				{ provide: SELFBITS_CONFIG, useValue: config }
 			]
 		}
 	}

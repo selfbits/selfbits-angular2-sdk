@@ -3,6 +3,7 @@ import {MockBackend, MockConnection} from "@angular/http/testing";
 import {BaseRequestOptions, Http, HttpModule, RequestMethod, ResponseOptions, Response, Headers} from "@angular/http";
 import {TESTCONFIG, TESTURL, mockUploadFile, mockExistingFile} from "./helpers";
 import {SelfbitsFile} from "../src/services/file";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 
 describe('file.ts',()=> {
@@ -17,7 +18,7 @@ describe('file.ts',()=> {
 					return new Http(backend, defaultOptions);
 				}, deps: [MockBackend, BaseRequestOptions]
 				},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsFile
 			],
 			imports: [

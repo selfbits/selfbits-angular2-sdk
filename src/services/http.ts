@@ -28,9 +28,9 @@ export class SbHttp{
 			.catch(this.errorHandler)
 	}
 
-	public query(params?:QueryParams){
+	public query(queryParams?:QueryParams){
 		this.checkForToken();
-		return this.http.get(utils.queryParamsUrlHelper(this.baseUrl,params),{headers: this.headers})
+		return this.http.get(utils.queryParamsUrlHelper(this.baseUrl,queryParams),{headers: this.headers})
 			.catch(this.errorHandler)
 	}
 

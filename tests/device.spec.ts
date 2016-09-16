@@ -4,6 +4,7 @@ import {BaseRequestOptions, Http, HttpModule, ResponseOptions, Response, Request
 import {TESTHEADERS, TESTURL, TESTCONFIG} from "./helpers";
 
 import {SelfbitsDevice} from "../src/services/device";
+import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 declare var window:any;
 
@@ -19,7 +20,7 @@ describe('device.ts',()=> {
 					return new Http(backend, defaultOptions);
 				}, deps: [MockBackend, BaseRequestOptions]
 				},
-				{ provide: 'SelfbitsConfig', useValue:TESTCONFIG},
+				{ provide: SELFBITS_CONFIG, useValue:TESTCONFIG},
 				SelfbitsDevice
 			],
 			imports: [

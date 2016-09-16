@@ -1,9 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import {Injectable, Inject, forwardRef} from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs';
 
 import * as utils from '../utils/utils'
 import { SelfbitsAppConfig, SelfbitsAuthConfig } from '../utils/interfaces';
+import {SELFBITS_CONFIG} from "../utils/tokens";
 
 declare var window:any;
 
@@ -16,11 +17,11 @@ export class SelfbitsAuth{
 	private loginPath= 'api/v1/auth/login';
 	private signupPath= 'api/v1/auth/signup';
 	private signupAnonymousPath = '/api/v1/auth/signup/anonymous';
-	private changePasswordPath = 'api/v1/auth/password';
+	private passwordPath = 'api/v1/auth/password';
 	private socialPath= 'api/v1/oauth';
 	private interval = Observable.interval(500);
 
-	constructor(@Inject('SelfbitsConfig') private config:SelfbitsAppConfig, private http:Http){
+	constructor(@Inject(SELFBITS_CONFIG) private config:SelfbitsAppConfig, private http:Http){
 		this.baseUrl = utils.stripTrailingSlash(this.config.BASE_URL);
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
@@ -59,11 +60,11 @@ export class SelfbitsAuth{
 			});
 	}
 
-	public changePassword(newPassword:string, oldPassword:string){
+	public password(newPassword:string, oldPassword?:string){
 		this.checkForToken();
-		return this.http.post(`${this.baseUrl}/${this.changePasswordPath}`, JSON.stringify({
+		return this.http.post(`${this.baseUrl}/${this.passwordPath}`, JSON.stringify({
 				newPassword: newPassword,
-				oldPassword: oldPassword
+				oldPassword: oldPassword || null
 			}),
 			{headers: this.headers})
 	}
@@ -122,7 +123,7 @@ export class SelfbitsAuth{
 		return response$
 	}
 
-	public unlink(providerName:string){
+	public unlink(providerName:string):Observable<Response>{
 		this.checkForToken();
 		return this.http.delete(`${this.baseUrl}/${this.socialPath}/${providerName}/unlink`,{headers: this.headers})
 	}
