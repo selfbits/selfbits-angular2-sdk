@@ -27,7 +27,7 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 	- [SelfbitsAngular: auth](#auth)
 		- [auth.login(authData)](#auth.login)
 		- [auth.signup(authData)](#auth.signup)
-		- [auth.social(providerName)](#auth.social)
+		- [auth.social(providerName)](#auth-social-providerName)
 		- [auth.unlink(providerName)](#auth.unlink)
 		- [auth.password(newPassword, oldPassword)](#auth.password)
 		- [auth.logout()](#auth.logout)
@@ -178,7 +178,7 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 - [auth.signupAnonymous()](#auth.signupanonymous)
 
 
-### <a id="auth.login"></a> auth.login(authData) : Observable<Response>
+### auth.login(authData)
 
 Sign in using email and password.
 
@@ -218,7 +218,7 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-### <a id="auth.signup"></a> auth.signup(authData) : Observable<Response>
+### auth.signup(authData)
 
 Sign up using email and password. 
 
@@ -258,7 +258,7 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### <a id="auth.signupanonymous"></a> auth.signupAnonymous() : Observable<Response>
+### auth.signupAnonymous()
 
 Signup as anonymous user
 
@@ -286,7 +286,7 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.social(providerName:string) : Observable<Response>
+### auth.social(providerName)
 
 Sign in __OR__ up using social providers. Opens a popup window, that leads the user through the social auth flow.
 
@@ -322,24 +322,20 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-#### <a id="auth.unlink"></a> `auth.unlink(providerName:string) : Observable<Response>`
+### auth.unlink(providerName)
 
 Unlink social providers from a user profile, so it become linkable from other accounts.
 Does __NOT__ remove authentication rights from provider itself.
 
 
-##### Parameters
-
-Param | Type | Details
------------- | -------------
-providerName| `string` | String with the Providername, e.g. 'facebook' or 'google'
+|Param | Type | Details|
+|------|------ | ------|
+|providerName|`string`| String with the Providername in lowercase, e.g. 'facebook' or 'github'|
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
-
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 ##### Usage
 
