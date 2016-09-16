@@ -24,7 +24,7 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 	- [Usage in Components](#usage-in-components)
 	- [Usage in Services](#usage-in-services)
 - [API Reference](#api-reference)
-	- [SelfbitsAngular: auth](#auth)
+	- [SelfbitsAngular: auth](#selfbitsangular-auth)
 		- [auth.login(authData)](#auth.login)
 		- [auth.signup(authData)](#auth.signup)
 		- [auth.social(providerName)](#auth-social-providerName)
@@ -364,16 +364,15 @@ You have to make sure to make necessary sanity checks for the new password (e.g.
 
 ##### Parameters
 
-Param | Type | Details
------------- | -------------
-newPassword| `string` | The new password
-oldPassword (optional)| `string` | The existing password (only required if a password already exists)
+|Param | Type | Details|
+|------|------ | -------------|
+|newPassword| `string` | The new password|
+|oldPassword (optional)| `string` | The existing password (only required if a password already exists)|
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 
 ##### Usage
@@ -396,41 +395,40 @@ this.sb.auth.password('oldPassword', 'newPassword').subscribe(
 ```
 
 
-#### <a id="auth.logout"></a> `auth.logout()`
+### auth.logout()
 
-Logs out the current user, removing the Token and the UserId from localStorage.
+Logs out the current user, removing Token, UserId and Expires from localStorage.
 
 
 ##### Usage
 
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
-
-
-this.sb.auth.logout();
+constructor(private sb: SelfbitsAngular) {
+	this.sb.auth.logout();
+}
 ```
 
-#### <a id="auth.getuserid"></a> `auth.getUserId()`
+### auth.getUserId()
 
-Returns the ID of the logged-in user for use e.g. in database querys.
+Returns the ID as String of the logged-in user from localStorage
+
 
 ##### Usage
 
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
 
+constructor(private sb: SelfbitsAngular) {
 
 this.sb.auth.getUserId();
+
+}
 ```
 
 
+### auth.isAuthenticated()
 
+Returns boolean by checking if token exists in localStorage
 
-#### <a id="auth.isauthenticated"></a> `auth.isAuthenticated()`
-
-Returns true if an authenticated user exists on the client
 
 ##### Usage
 
@@ -450,7 +448,6 @@ this.sb.auth.password('oldPassword', 'newPassword').subscribe(
   }
 );
 ```
-
 
 
 ### <a id="database"></a> `SelfbitsAngular: database`
