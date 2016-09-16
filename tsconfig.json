@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"module": "commonjs",
+		"target": "es5",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"inlineSources": true,
+		"declaration": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"outDir": "dist"
+	},
+	"files": [
+		"./typings/index.d.ts",
+		"./index.ts",
+		"./src/angularselfbits.ts",
+		"./src/services/auth.ts",
+		"./src/services/database.ts",
+		"./src/services/device.ts",
+		"./src/services/file.ts",
+		"./src/services/http.ts",
+		"./src/services/index.ts",
+		"./src/services/push.ts",
+		"./src/services/user.ts",
+		"./src/utils/interfaces.ts",
+		"./src/utils/utils.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"coverage",
+		"tests"
+	]
+}

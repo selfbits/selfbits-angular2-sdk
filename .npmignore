@@ -1,0 +1,11 @@
+# Dev #
+*.ts
+!*.d.ts
+tests/
+karma.conf.js
+karma-test-shim.js
+
+.idea
+node_modules/
+coverage/
+.DS_Store
