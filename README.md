@@ -378,20 +378,18 @@ You have to make sure to make necessary sanity checks for the new password (e.g.
 ##### Usage
 
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
+constructor(private sb: SelfbitsAngular) {
 
-
-this.sb.auth.password('oldPassword', 'newPassword').subscribe(
-  res => {
-    if (res.status === 200){
-      // Do something
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
+	this.sb.auth.password('oldPassword', 'newPassword').subscribe( res => {
+	     if (res.status === 200){
+	       // Redirect user here after a successful login.';
+	     }
+	     else{
+	       // Handle errors depndening the response, such as 401 unauthorized
+	     }
+	     }, err => console.log(err)
+	);
+}
 ```
 
 
@@ -433,20 +431,18 @@ Returns boolean by checking if token exists in localStorage
 ##### Usage
 
 ```js
-import {SelfbitsAngular} from 'selfbits-angular2-sdk';
-constructor(private sb: SelfbitsAngular) {}
+constructor(private sb: SelfbitsAngular) {
 
-
-this.sb.auth.password('oldPassword', 'newPassword').subscribe(
-  res => {
-    if (res.status === 200){
-      // Do something
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
-  }
-);
+	this.sb.auth.password('oldPassword', 'newPassword').subscribe( res => {
+         if (res.status === 200){
+           // Redirect user here after a successful login.';
+         }
+         else{
+           // Handle errors depndening the response, such as 401 unauthorized
+         }
+	     }, err => console.log(err)
+	);
+}
 ```
 
 
