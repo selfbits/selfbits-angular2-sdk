@@ -167,15 +167,15 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 
 ### `SelfbitsAngular: auth`
 
-- [auth.login(authData)](#auth.login)
-- [auth.signup(authData)](#auth.signup)
-- [auth.social(providerName)](#auth.social)
-- [auth.unlink(providerName)](#auth.unlink)
-- [auth.password(newPassword, oldPassword)](#auth.password)
-- [auth.logout()](#auth.logout)
-- [auth.getUserId()](#auth.getuserid)
-- [auth.isAuthenticated()](#auth.isauthenticated)
-- [auth.signupAnonymous()](#auth.signupanonymous)
+- [auth.login(authData)](#authloginauthdata)
+- [auth.signup(authData)](#authsignupauthdata)
+- [auth.social(providerName)](#authsocialprovidername)
+- [auth.unlink(providerName)](#authunlinkprovidername)
+- [auth.password(newPassword, oldPassword)](#authpasswordnewpasswordstring-oldpasswordstring)
+- [auth.logout()](#authlogout)
+- [auth.getUserId()](#authgetuserid)
+- [auth.isAuthenticated()](#authisauthenticated)
+- [auth.signupAnonymous()](#authsignupanonymous)
 
 
 ### auth.login(authData)
