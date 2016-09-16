@@ -182,17 +182,15 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 
 Sign in using email and password.
 
-##### Parameters
 
 |Param | Type | Details|
 |------|------ | ------|
 |authData| `Object` | `{email:string, password:string}`|
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 
 #### Usage
@@ -223,21 +221,19 @@ constructor(private sb: SelfbitsAngular) {
 #### <a id="auth.signup"></a> `auth.signup(authData) : Observable<Response>`
 
 Sign up using email and password. 
+
 * __Note__ Our Backend accepts only email and password properties for basic signup, everything else will be ignored
 Don't forget to use angulars formbuilder to perform basic validations!
 
-
-##### Parameters
 
 |Param | Type | Details|
 |------|------ | ------|
 |authData| `Object` | `{email:string, password:string}`|
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 ##### Usage
 
