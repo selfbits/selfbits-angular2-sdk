@@ -41,8 +41,8 @@ Selfbits Backend-as-Service allows you to skip backend development and focus on 
 		- [file.upload(params)](#fileuploadparams)
 	- [SelfbitsAngular: user](#selfbitsangular-user)
 		- [user.current()](#usercurrent)
-	- [device](#device)
-		- [device.sync()](#device.sync)
+	- [device](#selfbitsangular-device)
+		- [device.sync()](#devicesync)
 - [License](#license)
 
 
@@ -749,7 +749,7 @@ constructor(private sb: SelfbitsAngular) {
 
 
 
-## <a id="license"></a> License
+## License
 
 Copyright (c) 2016 Selfbits GmbH
 
