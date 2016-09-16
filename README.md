@@ -178,7 +178,7 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 - [auth.signupAnonymous()](#auth.signupanonymous)
 
 
-### <a id="auth.login"></a> `auth.login(authData) : Observable<Response>`
+### <a id="auth.login"></a> auth.login(authData) : Observable<Response>
 
 Sign in using email and password.
 
@@ -218,7 +218,7 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-### <a id="auth.signup"></a> `auth.signup(authData) : Observable<Response>`
+### <a id="auth.signup"></a> auth.signup(authData) : Observable<Response>
 
 Sign up using email and password. 
 
@@ -258,15 +258,14 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### <a id="auth.signupanonymous"></a> `auth.signupAnonymous()`
+### <a id="auth.signupanonymous"></a> auth.signupAnonymous() : Observable<Response>
 
 Signup as anonymous user
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 
 ##### Usage
@@ -287,24 +286,21 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-#### <a id="auth.social"></a> `auth.social(providerName:string) : Observable<Response>`
+### auth.social(providerName:string) : Observable<Response>
 
 Sign in __OR__ up using social providers. Opens a popup window, that leads the user through the social auth flow.
 
 __Note__ Selfbits handles the complete OAuth flow in our backend. Please follow the Setup Guide in your Project > Authentication > Auth Provider
 
 
-##### Parameters
-
-Param | Type | Details
------------- | -------------
-providerName|`string`| String with the Providername in lowercase, e.g. 'facebook' or 'github'
+|Param | Type | Details|
+|------|------ | ------|
+|providerName|`string`| String with the Providername in lowercase, e.g. 'facebook' or 'github'|
 
 
-##### Returns
-
-Observable<Response> 
-Use toPromise() operator to transform to promise.
+|Return|Type|Details|
+|------|------ | ------|
+|Observable|`Response`|Use toPromise() to transform to promise|
 
 
 ##### Usage
