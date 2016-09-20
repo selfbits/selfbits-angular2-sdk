@@ -1,19 +1,17 @@
-import {NgModule, ModuleWithProviders, OpaqueToken} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import { Injectable } from '@angular/core';
 
-import {
-	SelfbitsAuth,
-	SelfbitsDatabase,
-	SelfbitsFile,
-	SelfbitsUser,
-	SelfbitsDevice,
-	SelfbitsPush
-} from './services/index';
 
 import { SelfbitsAppConfig } from './utils/interfaces';
 
 import { HttpModule } from '@angular/http';
 import {SELFBITS_CONFIG} from "./utils/tokens";
+import {SelfbitsAuth} from "./services/auth";
+import {SelfbitsDatabase} from "./services/database";
+import {SelfbitsFile} from "./services/file";
+import {SelfbitsUser} from "./services/user";
+import {SelfbitsDevice} from "./services/device";
+import {SelfbitsPush} from "./services/push";
 
 @Injectable()
 export class SelfbitsAngular {
