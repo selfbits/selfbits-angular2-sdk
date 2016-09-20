@@ -8,7 +8,7 @@ import {
 	SelfbitsUser,
 	SelfbitsDevice,
 	SelfbitsPush
-} from './services/';
+} from './services/index';
 
 import { SelfbitsAppConfig } from './utils/interfaces';
 
