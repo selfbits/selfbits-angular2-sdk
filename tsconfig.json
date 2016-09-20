@@ -20,7 +20,6 @@
 		"./src/services/device.ts",
 		"./src/services/file.ts",
 		"./src/services/http.ts",
-		"./src/services/index.ts",
 		"./src/services/push.ts",
 		"./src/services/user.ts",
 		"./src/utils/interfaces.ts",
