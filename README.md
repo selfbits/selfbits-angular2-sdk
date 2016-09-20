@@ -54,7 +54,7 @@ npm install selfbits-angular2-sdk --save
 
 ##  Setup
 
-### Setup via ngModule (since RC5)
+### Setup via ngModule
 ```javascript
 
 import {SelfbitsAngularModule} from 'selfbits-angular2-sdk';
@@ -82,7 +82,7 @@ export class AppModule { }
 
 ```
 
-### Setup via boostrap (before RC5)
+### Setup via boostrap (before RC5, to be deprecated)
 ```javascript
 
 import {SelfbitsSetup, SELFBITS_PROVIDERS} from 'selfbits-angular2-sdk';
@@ -112,7 +112,7 @@ bootstrap(
 
 * __Note__: Our sdk is designed, so that you can consume them directly inside your components. 
 
-### Usage in Components
+### General usage in Components
 
 ```javascript
 
@@ -131,7 +131,7 @@ export class LoginComponent {
 }
 ```
 
-### Usage in Services
+### Gernal usage in Services
 
 Of course feel free to wrap our methods in your own services!
 
@@ -157,6 +157,92 @@ export class TodoDatabaseService {
 	}
 }
 ```
+
+## Implementation with popular templates
+
+
+### SystemJS Based
+
+With SystemJS you need to configure the __system.config.js__ file in order to have the sdk loaded.
+The config file usually sits directly in the root folder.
+
+##### [Angular 2 Quickstart](https://github.com/angular/quickstart)
+
+This is the offical quickstart template found on angular.io.
+
+```javascript
+map:{
+	(...)
+	// other libraries
+	'rxjs':                       'npm:rxjs',
+	'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+	'selfbits-angular2-sdk':      'npm:selfbits-angular2-sdk/dist' // This tells systemJs WHERE to look for the sdk, don't forget /dist!
+	},
+packages: {
+	(...)
+	'angular2-in-memory-web-api': {
+		main: './index.js',
+		defaultExtension: 'js'
+	},
+	'selfbits-angular2-sdk':{ // this teels systemJS WHAT to load, in our case the sdk's entry point
+		main:'./index.js',
+		defaultExtension: 'js'
+	}
+	rxjs: {
+		main: './Rx.js', // if console shows rxjs not found, then add this line 
+		defaultExtension: 'js'
+	}
+}
+(...)
+
+```
+
+##### [Angular 2 Seed](https://github.com/mgechev/angular2-seed)
+
+Angular 2 Seed by mgechev is one of the most popular angular 2 starter templates based on SystemJS.
+The system.config.js is devided to __project.config.ts__ and __seed.config.ts__ and can be found under root > tools > config.
+
+```js
+SYSTEM_CONFIG_DEV: any = {
+    defaultJSExtensions: true,
+    packageConfigPaths: [
+      `/node_modules/*/package.json`,
+      `/node_modules/**/package.json`,
+      `/node_modules/@angular/*/package.json`
+    ],
+    paths: {
+		(...)
+		'rxjs/*': 'node_modules/rxjs/*',
+		'selfbits-angular2-sdk':'node_modules/selfbits-angular2-sdk/dist/index.js', // here you need to specify the whole file path
+		'app/*': '/app/*',
+    },
+};
+
+SYSTEM_BUILDER_CONFIG: any = {
+	(...)
+    packages: {
+        (...)
+        'rxjs': {
+            defaultExtension: 'js'
+        },
+        'selfbits-angular2-sdk':{ // and again the package infos
+            main: 'index.js',
+            defaultExtension: 'js'
+        }
+    }
+};
+
+```
+
+
+### Webpack Based
+
+All you need to do is to install and setup the sdk as described above (in app.module.ts). 
+Webpack will take care of the rest for us. Here are some templates you can start with.
+
+##### [Angular 2 Start by Angular Class](https://github.com/AngularClass/angular2-webpack-starter)
+##### [Angular CLI](https://github.com/angular/angular-cli)
+
 
 ## API Reference
 
