@@ -499,24 +499,27 @@ constructor(private sb: SelfbitsAngular) {
 
 ### auth.isAuthenticated()
 
-Returns boolean by checking if token exists in localStorage
+Performs a user.current() http request with the current token, in order to check validity.
+Returns Observable<boolean>, can be use for angular 2 routing guards
 
 
 ##### Usage
 
 ```js
-constructor(private sb: SelfbitsAngular) {
+import {Injectable} from "@angular/core";
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
 
-	this.sb.auth.password('oldPassword', 'newPassword').subscribe( res => {
-         if (res.status === 200){
-           // Redirect user here after a successful login.';
-         }
-         else{
-           // Handle errors depndening the response, such as 401 unauthorized
-         }
-	     }, err => console.log(err)
-	);
+@Injectabe()
+
+export class RoutingGuard implements CanActivate {
+	constructor(private sb: SelfbitsAngular) {
+	}
+	
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<boolean> || boolean {
+		return this.sb.auth.isAuthenticated()
+	}
 }
+
 ```
 
 
