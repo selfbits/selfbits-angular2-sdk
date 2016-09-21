@@ -1,6 +1,6 @@
-import {Injectable, Inject, forwardRef} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject, Observer} from 'rxjs';
 
 import * as utils from '../utils/utils'
 import { SelfbitsAppConfig, SelfbitsAuthConfig } from '../utils/interfaces';
@@ -19,6 +19,7 @@ export class SelfbitsAuth{
 	private signupAnonymousPath = '/api/v1/auth/signup/anonymous';
 	private passwordPath = 'api/v1/auth/password';
 	private socialPath= 'api/v1/oauth';
+	private userPath = 'api/v1/user';
 	private interval = Observable.interval(500);
 
 	constructor(@Inject(SELFBITS_CONFIG) private config:SelfbitsAppConfig, private http:Http){
@@ -138,9 +139,27 @@ export class SelfbitsAuth{
 		return window.localStorage.getItem('userId');
 	}
 
-	public isAuthenticated(){
-		return window.localStorage.getItem('token') !== null
+	public isAuthenticated():Observable<boolean>{
+		this.checkForToken();
+		let isAuth = new Observable<boolean>((observer:Observer<boolean>) => {
+			this.http.get(`${this.baseUrl}/${this.userPath}`,{headers: this.headers}).subscribe(res => {
+				console.log(res);
+				if (res.status === 200){
+					console.log(res.status);
+					observer.next(true);
+					observer.complete();
+				}else{
+					observer.next(false);
+					observer.complete();
+				}
+			},() => {
+				observer.next(false);
+				observer.complete();
+			});
+		});
+		return isAuth
 	}
+
 
 	private getSocialToken(providerName:string, uniqueState:string):Observable<Response>{
 		let getTokenUrl = `${this.baseUrl}/${this.socialPath}/${providerName}/token?state=${uniqueState}`;
