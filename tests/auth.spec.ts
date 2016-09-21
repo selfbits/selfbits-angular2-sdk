@@ -65,14 +65,6 @@ describe('auth.ts',()=> {
 		expect(auth.getUserId()).toEqual('authTestUserId');
 	}));
 
-	it('isAuthenticated() should return check user state',inject ([SelfbitsAuth],(auth:SelfbitsAuth)=>{
-		window.localStorage.setItem('token', 'authTesttoken');
-		expect(auth.isAuthenticated()).toBeTruthy();
-		window.localStorage.removeItem('token');
-		expect(auth.isAuthenticated()).toBeFalsy();
-	}))
-
-
 	describe('check methodes', ()=>{
 
 		let auth:SelfbitsAuth;
@@ -248,6 +240,33 @@ describe('auth.ts',()=> {
 			expect(window.localStorage.getItem('expires')).toEqual('fancyExpiration');
 
 		}));
+
+		it('isAuthenticated() should return check user state',fakeAsync(()=>{
+
+			backend.connections.subscribe( (connection:MockConnection)=>{
+				expect(connection.request.method).toBe(RequestMethod.Get);
+				expect(connection.request.url).toEqual('www.test.io/api/v1/user');
+
+				let res = {
+					status:200
+				};
+
+
+				let response = new ResponseOptions({status:200});
+				connection.mockRespond(new Response(response));
+
+			});
+
+			auth.isAuthenticated().subscribe(res => {
+				response = res;
+			});
+
+			tick();
+
+			expect(response).toBeTruthy();
+			expect(checkTokenSpy).toHaveBeenCalled();
+		}))
+
 
 
 
