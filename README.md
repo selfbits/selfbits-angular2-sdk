@@ -55,9 +55,14 @@ npm install selfbits-angular2-sdk --save
 ##  Setup
 
 ### Setup via ngModule
+
+* __Note__: httpModule needs to be loaded before the SelfbitsAngularModule.
+
 ```javascript
 
 import {SelfbitsAngularModule} from 'selfbits-angular2-sdk';
+import { HttpModule } from '@angular/http';
+
 
 const SELFBITSCONFIG = {
   /* Your App Domain */
@@ -74,6 +79,7 @@ const SELFBITSCONFIG = {
 @NgModule({
 	imports: [
 		/* other imports */
+		httpModule,
 		SelfbitsAngularModule.initializeApp(SELFBITSCONFIG)
 	],
 	/*...your other providers, declarations,..*/

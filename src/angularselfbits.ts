@@ -46,8 +46,7 @@ export const SelfbitsSetup = (appConfig: SelfbitsAppConfig): any => {
 
 // RC5+ using ngModule to load providers
 @NgModule({
-	providers:SELFBITS_PROVIDERS,
-	imports:[ HttpModule ]
+	providers:SELFBITS_PROVIDERS
 })
 
 export class SelfbitsAngularModule{
@@ -60,3 +59,4 @@ export class SelfbitsAngularModule{
 		}
 	}
 }
+
