@@ -576,7 +576,7 @@ __meta__ When set to true, shows timestamp and version metadata
 ##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
-|getParams| `Object` | `GetParams {id: any,deep?: boolean,meta?: boolean}`|
+|getParams| `Object` | `SbGetParams {id: any,deep?: boolean,meta?: boolean}`|
 
 ##### Returns
 - **response** - The HTTP response object from the server.
@@ -589,7 +589,7 @@ If no params are sent, then all items are fetched according to user roles settin
 ##### Parameters
 |Param | Type | Details|
 |------|------ | -------------|
-|(Optional) queryParams| `Object` | `GetParams pageSize?: number,pageNumber?: number,filter?: string,sort?: string,deep?: boolean,meta?: boolean`|
+|(Optional) queryParams| `Object` | `SbGetParams pageSize?: number,pageNumber?: number,filter?: string,sort?: string,deep?: boolean,meta?: boolean`|
 
 ##### Returns
 - **response** - The HTTP response object from the server.

@@ -60,3 +60,6 @@ export class SelfbitsAngularModule{
 	}
 }
 
+export { SbHttp } from './services/http'
+export { SelfbitsAppConfig, SelfbitsAuthConfig} from './utils/interfaces'
+export { SELFBITS_CONFIG } from './utils/tokens'

@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { SelfbitsAppConfig, ExistingFile, UploadFile } from '../utils/interfaces';
+import { SelfbitsAppConfig, SbExistingFile, SbUploadFile } from '../utils/interfaces';
 import * as utils from '../utils/utils'
 import {SELFBITS_CONFIG} from "../utils/tokens";
 
@@ -31,7 +31,7 @@ export class SelfbitsFile {
 	/*
 	 * ToDo: Test Missing: use for this the tests for initiateUpload, executeUpload, verifyUpload
 	 */
-	public upload(uploadFile: UploadFile): Observable<any> {
+	public upload(uploadFile: SbUploadFile): Observable<any> {
 		let file: any = uploadFile.file;
 		let initiateUploadResponse:any;
 		return this.initiateUpload(uploadFile)
@@ -48,7 +48,7 @@ export class SelfbitsFile {
 	}
 
 
-	private initiateUpload(uploadFile: UploadFile): Observable<any> {
+	private initiateUpload(uploadFile: SbUploadFile): Observable<any> {
 		if (!uploadFile || !uploadFile.file) {
 			throw new Error('Upload initialization failed! Missing file param!');
 		} else {
@@ -87,7 +87,7 @@ export class SelfbitsFile {
 		}
 	}
 
-	public get(existingFile: ExistingFile): Observable<any> {
+	public get(existingFile: SbExistingFile): Observable<any> {
 		this.checkForToken();
 		if (!existingFile.fileId) {
 			throw new Error('Missing fileId!');

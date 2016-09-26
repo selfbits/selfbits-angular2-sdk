@@ -1,5 +1,5 @@
 import {Headers} from "@angular/http";
-import {SelfbitsAppConfig, SbAuthSucessResponse, UploadFile, ExistingFile} from "../src/utils/interfaces";
+import {SelfbitsAppConfig, SbAuthSucessResponse, SbUploadFile, SbExistingFile} from "../src/utils/interfaces";
 
 export const TESTHEADERS:Headers =  new Headers({
 	'Content-Type':'application/json',
@@ -21,7 +21,7 @@ export const TESTAUTHSUCESSRES:SbAuthSucessResponse = {
 	expires:'fancyExpiration'
 };
 
-export const mockUploadFile:UploadFile = {
+export const mockUploadFile:SbUploadFile = {
 	file: "contentOfTheFile",
 	fileName: "theFileName",
 	filePath: "the/File/Path",
@@ -29,7 +29,7 @@ export const mockUploadFile:UploadFile = {
 }
 
 
-export const mockExistingFile:ExistingFile  = {
+export const mockExistingFile:SbExistingFile  = {
 	fileId: "18849e2abb34c23a",
 	expiresInSeconds: 600000
 }
