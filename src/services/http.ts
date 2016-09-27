@@ -1,6 +1,6 @@
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { QueryParams, GetParams } from '../utils/interfaces';
+import { SbQueryParams, SbGetParams } from '../utils/interfaces';
 
 import * as utils from '../utils/utils'
 
@@ -22,13 +22,13 @@ export class SbHttp{
 	//ToDo: public postBulk(data:any){}
 	/* to create a bulk of new objects, not necessary at the moment*/
 
-	public get(getParams:GetParams):Observable<any>{
+	public get(getParams:SbGetParams):Observable<any>{
 		this.checkForToken();
 		return this.http.get(utils.getParamsUrlHelper(this.baseUrl,getParams),{headers: this.headers})
 			.catch(this.errorHandler)
 	}
 
-	public query(queryParams?:QueryParams){
+	public query(queryParams?:SbQueryParams){
 		this.checkForToken();
 		return this.http.get(utils.queryParamsUrlHelper(this.baseUrl,queryParams),{headers: this.headers})
 			.catch(this.errorHandler)

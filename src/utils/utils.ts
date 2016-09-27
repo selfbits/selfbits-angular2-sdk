@@ -1,5 +1,5 @@
 
-import {QueryParams, GetParams} from './interfaces';
+import {SbQueryParams, SbGetParams} from './interfaces';
 
 export function stripTrailingSlash(value: string): string {
 	// Is the last char a /
@@ -21,7 +21,7 @@ export function setLocalStorage(key: string, value: string) {
 
 export function queryParamsUrlHelper(
 	baseUrl: string,
-	params?: QueryParams): string {
+	params?: SbQueryParams): string {
 
 	if (!params) { return `${baseUrl}`; }
 	let url: string = baseUrl;
@@ -67,7 +67,7 @@ export function queryParamsUrlHelper(
 
 export function getParamsUrlHelper(
 	baseUrl: string,
-	params?: GetParams): string {
+	params?: SbGetParams): string {
 
 
 	let url = `${baseUrl}/${params.id}`;

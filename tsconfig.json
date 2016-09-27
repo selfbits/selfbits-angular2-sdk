@@ -23,7 +23,8 @@
 		"./src/services/push.ts",
 		"./src/services/user.ts",
 		"./src/utils/interfaces.ts",
-		"./src/utils/utils.ts"
+		"./src/utils/utils.ts",
+		"./src/utils/tokens"
 	],
 	"exclude": [
 		"node_modules",
