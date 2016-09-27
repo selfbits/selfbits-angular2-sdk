@@ -36,16 +36,19 @@ Please note that you MUST have a Selfbits BaaS Account and an active Project to 
 - [Setup in ngModule](#setup)
 
 - [Usage](#usage)
-
   - [Usage in Components](#usage-in-components)
   - [Usage in Services](#usage-in-services)
 
--[Implementation with popular templates](#Implementation-with-popular-templates)
+- [Implementation with popular templates](#implementation-with-popular-templates)
+  - [SystemJS Based](#systemjs-based)
+      - [Angular 2 Quickstart](#angular-2-quickstart)
+      - [Angular 2 Seed](#angular-2-seed)
+  - [Webpack Based](#systemjs-based)
+      - [Angular Starter Webpack](#angular-2-starter-webpack)
+      - [Angular Cli](#angular-cli)
 
 - [API Reference](#api-reference)
-
   - [SelfbitsAngular: auth](#selfbitsangular-auth)
-
     - [auth.login()](#authloginauthdata)
     - [auth.signup()](#authsignupauthdata)
     - [auth.social()](#authsocialprovidername)
@@ -57,20 +60,16 @@ Please note that you MUST have a Selfbits BaaS Account and an active Project to 
     - [auth.signupAnonymous()](#authsignupanonymous)
 
   - [SelfbitsAngular: database](#selfbitsangular-database)
-
     - [database.databaseSchema(tableName)](#databasedatabaseschematablename)
 
   - [SelfbitsAngular: file](#selfbitsangular-file)
-
     - [file.get(params)](#filegetparams)
     - [file.upload(params)](#fileuploadparams)
 
   - [SelfbitsAngular: user](#selfbitsangular-user)
-
     - [user.current()](#usercurrent)
 
   - [device](#selfbitsangular-device)
-
     - [device.sync()](#devicesync)
 
 - [License](#license)
@@ -118,7 +117,7 @@ export class AppModule { }
 
 Our sdk can be consumed directly inside your components.
 
-### General usage in Components
+### Usage in Components
 
 ```javascript
 
@@ -137,7 +136,7 @@ export class LoginComponent {
 }
 ```
 
-### General usage in Services
+### Usage in Services
 
 Of course feel free to wrap our methods in your own services!
 
@@ -170,9 +169,9 @@ export class TodoDatabaseService {
 
 With SystemJS you need to configure the **system.config.js** file in order to have the sdk loaded. The config file usually sits directly in the root folder.
 
-#### [Angular 2 Quickstart](https://github.com/angular/quickstart)
+#### Angular 2 Quickstart
 
-This is the offical quickstart template found on angular.io.
+This is the offical [quickstart template](https://github.com/angular/quickstart) found on angular.io.
 
 ```javascript
 map:{
@@ -200,9 +199,9 @@ packages: {
 (...)
 ```
 
-#### [Angular 2 Seed](https://github.com/mgechev/angular2-seed)
+#### Angular 2 Seed
 
-Angular 2 Seed by mgechev is one of the most popular angular 2 starter templates based on SystemJS. The system.config.js is devided to **project.config.ts** and **seed.config.ts** and can be found under root > tools > config.
+[Angular 2 Seed by mgechev](https://github.com/mgechev/angular2-seed) is one of the most popular angular 2 starter templates based on SystemJS. The system.config.js is devided to **project.config.ts** and **seed.config.ts** and can be found under root > tools > config.
 
 ```javascript
 SYSTEM_CONFIG_DEV: any = {
@@ -239,9 +238,11 @@ SYSTEM_BUILDER_CONFIG: any = {
 
 All you need to do is to install and setup the sdk as described above (in app.module.ts). Webpack will take care of the rest for us. Here are some templates you can start with.
 
-#### [Angular 2 Start by Angular Class](https://github.com/AngularClass/angular2-webpack-starter)
+#### Angular 2 Starter Wepback
+This popular [template](https://github.com/AngularClass/angular2-webpack-starter) is created from the people of [Angular Class](https://angularclass.com/) and uses Webpack to bundle the files.
 
-#### [Angular CLI](https://github.com/angular/angular-cli)
+#### Angular CLI
+A powerful and convenient [CLI tool](https://github.com/angular/angular-cli) for creating, serving and testing angular 2
 
 ## API Reference
 
