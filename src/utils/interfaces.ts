@@ -20,7 +20,6 @@ export interface SelfbitsHttp{
 	delete(id:string):Observable<Response>
 }
 
-
 export interface SbAuthSucessResponse {
 	token:string,
 	userId:string,
