@@ -264,21 +264,21 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 - [auth.isAuthenticated()](#auth-isauthenticated-)
 - [auth.signupAnonymous()](#auth-signupanonymous-)
 
-### auth.login(authData)
+#### auth.login(authData)
 
 Sign in using email and password.
 
-#### Parameters
+###### Parameters
 
 Param    | Type     | Details
 -------- | -------- | ---------------------------------
 authData | `Object` | `{email:string, password:string}`
 
-#### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+###### Usage
 
 ```javascript
 /* Place code below inside Component or Service */
@@ -303,23 +303,23 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.signup(authData)
+#### auth.signup(authData)
 
 Sign up using email and password.
 
 - **Note** Our Backend accepts only email and password properties for basic signup, everything else will be ignored Don't forget to use angulars formbuilder to perform basic validations!
 
-#### Parameters
+##### Parameters
 
 Param    | Type     | Details
 -------- | -------- | ---------------------------------
 authData | `Object` | `{email:string, password:string}`
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -342,15 +342,15 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.signupAnonymous()
+#### auth.signupAnonymous()
 
 Signup as anonymous user
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -368,23 +368,23 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.social(providerName)
+#### auth.social(providerName)
 
 Sign in **OR** up using social providers. Opens a popup window, that leads the user through the social auth flow.
 
 __Selfbits handles the complete OAuth flow in our backend. Please follow the Setup Guide in your Selfbits Admin Panel under: Project > Authentication > Auth Provider__
 
-#### Parameters
+##### Parameters
 
 Param        | Type     | Details
 ------------ | -------- | ----------------------------------------------------------------------
 providerName | `string` | String with the Providername in lowercase, e.g. 'facebook' or 'github'
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -402,21 +402,21 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.unlink(providerName)
+#### auth.unlink(providerName)
 
 Unlink social providers from a user profile, so it become linkable from other accounts. Does **NOT** remove authentication rights from social provider itself.
 
-#### Parameters
+##### Parameters
 
 Param        | Type     | Details
 ------------ | -------- | ----------------------------------------------------------------------
 providerName | `string` | String with the Providername in lowercase, e.g. 'facebook' or 'github'
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -433,22 +433,22 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.password(newPassword, oldPassword?)
+#### auth.password(newPassword, oldPassword?)
 
 Allows users to update password or create one, if the user used social auth. You have to make sure to make necessary sanity checks for the new password (e.g. password repeat, password strength).
 
-#### Parameters
+##### Parameters
 
 Param                  | Type     | Details
 ---------------------- | -------- | ------------------------------------------------------------------
 newPassword            | `string` | The new password
 oldPassword (optional) | `string` | The existing password (only required if a password already exists)
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 constructor(private sb: SelfbitsAngular) {
@@ -465,15 +465,15 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.logout()
+#### auth.logout()
 
 Helper Method which removes Token, UserId and Expires from localStorage.
 
-#### Returns
+##### Returns
 
 - **Void**
 
-#### Usage
+##### Usage
 
 ```javascript
 constructor(private sb: SelfbitsAngular) {
@@ -481,13 +481,13 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.getUserId()
+#### auth.getUserId()
 
-#### Returns
+##### Returns
 
 - **String** - Returns the UserID as String by retrieving it from the localStorage
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -498,17 +498,17 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### auth.isAuthenticated()
+#### auth.isAuthenticated()
 
 Performs a user.current() http request with the current token, in order to check validity. Returns Observable
 
 <boolean>, can be use for angular 2 routing guards</boolean>
 
-#### Returns
+##### Returns
 
 - **Observable** - Returns Observable of type boolean
 
-#### Usage
+##### Usage
 
 ```javascript
 import {Injectable} from "@angular/core";
@@ -530,21 +530,21 @@ export class RoutingGuard implements CanActivate {
 
 Create a database object with CRUD Methods on the fly
 
-### database.databaseSchema(tableName)
+#### database.databaseSchema(tableName)
 
 Returns an instance of a SbHttp with CRUD Methods. Create by passing the SchemaId of your Collection on Selfbits.
 
-#### Parameters
+##### Parameters
 
 Param     | Type     | Details
 --------- | -------- | ----------------------------------------------
 tableName | `string` | Name of the table/collection you want to query
 
-#### Returns
+##### Returns
 
 - **Object** - returns a SelfbitsHttp object
 
-#### Usage
+##### Usage
 
 ```javascript
 public todoDb:SelfbitsHttp; // typing it provides intelliSense for IDE
@@ -566,13 +566,13 @@ get single item by ID, with optional params **deep** and **meta** booleans.
 
 **deep** When set to true, referenced children objects are fetched **meta** When set to true, shows timestamp and version metadata
 
-##### Parameters
+###### Parameters
 
 Param     | Type     | Details
 --------- | -------- | -----------------------------------------------------
 getParams | `Object` | `SbGetParams {id: any,deep?: boolean,meta?: boolean}`
 
-##### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
@@ -580,13 +580,13 @@ getParams | `Object` | `SbGetParams {id: any,deep?: boolean,meta?: boolean}`
 
 Get all items with optional mongoose filter as well as **deep** and **meta** booleans. If no params are sent, then all items are fetched according to user roles settings.
 
-##### Parameters
+###### Parameters
 
 Param                  | Type     | Details
 ---------------------- | -------- | ---------------------------------------------------------------------------------------------------------------
 (Optional) queryParams | `Object` | `SbGetParams pageSize?: number,pageNumber?: number,filter?: string,sort?: string,deep?: boolean,meta?: boolean`
 
-##### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
@@ -594,13 +594,13 @@ Param                  | Type     | Details
 
 Post data to the collection specified according to the created database.Schema('collectionName') instance.
 
-##### Parameters
+###### Parameters
 
 Param | Type     | Details
 ----- | -------- | -------------------------------
 data  | `Object` | according to collection created
 
-##### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
@@ -613,7 +613,7 @@ Param | Type     | Details
 data  | `Object` | according to collection created
 id    | `string` | id of item to be updated
 
-##### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
@@ -621,13 +621,13 @@ id    | `string` | id of item to be updated
 
 Removes item with specific id from collection.
 
-##### Parameters
+###### Parameters
 
 Param | Type     | Details
 ----- | -------- | ------------------------
 id    | `string` | id of item to be deleted
 
-##### Returns
+###### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
@@ -681,11 +681,11 @@ constructor(private sb:SelfbitsAngular){
 }
 ```
 
-### file.get(params)
+#### file.get(params)
 
 Get metadata of an uploaded file that contains a temporary download link.
 
-#### Parameters
+##### Parameters
 
 Param                   | Type     | required | default | Details
 ----------------------- | -------- | -------- | ------- | -----------------
@@ -693,11 +693,11 @@ params                  | `Object` | true     |         | JavaScript object
 params.fieldId          | `string` | true     |         | JavaScript object
 params.expiresInSeconds | `number` | false    | 900     | JavaScript object
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -723,11 +723,11 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### file.upload(params)
+#### file.upload(params)
 
 Upload a file to the authenticated user's file store. Unified function that initiates, executes and verifies the upload.
 
-#### Parameters
+##### Parameters
 
 Param                  | Type     | required | default          | Details
 ---------------------- | -------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -738,11 +738,11 @@ params.filePath        | `string` | false    | params.file.name | The destinatio
 <project-id>/<user-id>/</user-id></project-id>
 params.permissionScope | `string` | false    | user             | The permission scope: 'user' = only the uploading user can access the file. ' * ' : Every authenticated user can access the file with its fileId.
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -769,13 +769,13 @@ constructor(private sb: SelfbitsAngular) {
 
 ### SelfbitsAngular: user
 
-### user.current()
+#### user.current()
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 
@@ -796,15 +796,15 @@ constructor(private sb: SelfbitsAngular) {
 
 ### SelfbitsAngular: device
 
-### device.sync()
+#### device.sync()
 
 If an user is authenticeted this function will post user's mobile device informations to selfbits.
 
-#### Returns
+##### Returns
 
 - **Observable** - default angular 2 HTTP observable of type Response.
 
-#### Usage
+##### Usage
 
 ```javascript
 constructor(private sb: SelfbitsAngular) {
