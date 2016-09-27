@@ -49,28 +49,28 @@ Please note that you MUST have a Selfbits BaaS Account and an active Project to 
 
 - [API Reference](#api-reference)
   - [SelfbitsAngular: auth](#selfbitsangular-auth)
-    - [auth.login()](#authloginauthdata)
-    - [auth.signup()](#authsignupauthdata)
-    - [auth.social()](#authsocialprovidername)
-    - [auth.unlink()](#authunlinkprovidername)
-    - [auth.password()](#authpasswordnewpasswordstring-oldpasswordstring)
-    - [auth.logout()](#authlogout)
-    - [auth.getUserId()](#authgetuserid)
-    - [auth.isAuthenticated()](#authisauthenticated)
-    - [auth.signupAnonymous()](#authsignupanonymous)
+    - [auth.login(authData)](#auth-login-authdata-)
+    - [auth.signup(authData)](#auth-signup-authdata-)
+    - [auth.social(providerName)](#auth-social-providername-)
+    - [auth.unlink(providerName)](#auth-unlink-providername-)
+    - [auth.password(newPassword, oldPassword)](#auth-password-newpassword-oldpassword-)
+    - [auth.logout()](#auth-logout-)
+    - [auth.getUserId()](#auth-getuserid-)
+    - [auth.isAuthenticated()](#auth-isauthenticated-)
+    - [auth.signupAnonymous()](#auth-signupanonymous-)
 
   - [SelfbitsAngular: database](#selfbitsangular-database)
-    - [database.databaseSchema(tableName)](#databasedatabaseschematablename)
+    - [database.databaseSchema()](#database-databaseschema-tablename-)
 
   - [SelfbitsAngular: file](#selfbitsangular-file)
-    - [file.get(params)](#filegetparams)
-    - [file.upload(params)](#fileuploadparams)
+    - [file.get()](#file-getparams-)
+    - [file.upload()](#file-uploadparams-)
 
   - [SelfbitsAngular: user](#selfbitsangular-user)
-    - [user.current()](#usercurrent)
+    - [user.current()](#user-current-)
 
   - [device](#selfbitsangular-device)
-    - [device.sync()](#devicesync)
+    - [device.sync()](#device-sync-)
 
 - [License](#license)
 
@@ -254,15 +254,15 @@ import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 
 ### `SelfbitsAngular: auth`
 
-- [auth.login(authData)](#authloginauthdata)
-- [auth.signup(authData)](#authsignupauthdata)
-- [auth.social(providerName)](#authsocialprovidername)
-- [auth.unlink(providerName)](#authunlinkprovidername)
-- [auth.password(newPassword, oldPassword)](#authpasswordnewpasswordstring-oldpasswordstring)
-- [auth.logout()](#authlogout)
-- [auth.getUserId()](#authgetuserid)
-- [auth.isAuthenticated()](#authisauthenticated)
-- [auth.signupAnonymous()](#authsignupanonymous)
+- [auth.login(authData)](#auth-login-authdata-)
+- [auth.signup(authData)](#auth-signup-authdata-)
+- [auth.social(providerName)](#auth-social-providername-)
+- [auth.unlink(providerName)](#auth-unlink-providername-)
+- [auth.password(newPassword, oldPassword)](#auth-password-newpassword-oldpassword-)
+- [auth.logout()](#auth-logout-)
+- [auth.getUserId()](#auth-getuserid-)
+- [auth.isAuthenticated()](#auth-isauthenticated-)
+- [auth.signupAnonymous()](#auth-signupanonymous-)
 
 ### auth.login(authData)
 
