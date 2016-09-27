@@ -48,7 +48,7 @@ Please note that you MUST have a Selfbits account and an active Project to use t
       - [Angular Cli](#angular-cli)
 
 - [API Reference](#api-reference)
-  - [SelfbitsAngular: auth](#-selfbitsangular-auth-)
+  - [SelfbitsAngular: auth](#selfbitsangular-auth)
     - [auth.login(authData)](#auth-login-authdata-)
     - [auth.signup(authData)](#auth-signup-authdata-)
     - [auth.social(providerName)](#auth-social-providername-)
@@ -59,17 +59,17 @@ Please note that you MUST have a Selfbits account and an active Project to use t
     - [auth.isAuthenticated()](#auth-isauthenticated-)
     - [auth.signupAnonymous()](#auth-signupanonymous-)
 
-  - [SelfbitsAngular: database](#-selfbitsangular-database-)
+  - [SelfbitsAngular: database](#selfbitsangular-database)
     - [database.databaseSchema()](#database-databaseschema-tablename-)
 
-  - [SelfbitsAngular: file](#-selfbitsangular-file-)
+  - [SelfbitsAngular: file](#selfbitsangular-file)
     - [file.get()](#file-getparams-)
     - [file.upload()](#file-uploadparams-)
 
-  - [SelfbitsAngular: user](#-selfbitsangular-user-)
+  - [SelfbitsAngular: user](#selfbitsangular-user)
     - [user.current()](#user-current-)
 
-  - [device](#-selfbitsangular-device-)
+  - [device](#selfbitsangular-device)
     - [device.sync()](#device-sync-)
 
 - [License](#license)
@@ -252,7 +252,7 @@ A powerful and convenient [CLI tool](https://github.com/angular/angular-cli) for
 import {SelfbitsAngular} from 'selfbits-angular2-sdk';
 ```
 
-### `SelfbitsAngular: auth`
+### SelfbitsAngular: auth
 
 - [auth.login(authData)](#auth-login-authdata-)
 - [auth.signup(authData)](#auth-signup-authdata-)
@@ -526,7 +526,7 @@ export class RoutingGuard implements CanActivate {
 }
 ```
 
-### `SelfbitsAngular: database`
+### SelfbitsAngular: database
 
 Create a database object with CRUD Methods on the fly
 
@@ -672,7 +672,7 @@ constructor(private sb: SelfbitsAngular) {
 ```
 
 
-### `SelfbitsAngular: file`
+### SelfbitsAngular: file
 
 ```javascript
 constructor(private sb:SelfbitsAngular){
@@ -767,7 +767,7 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### `SelfbitsAngular: user`
+### SelfbitsAngular: user
 
 ### user.current()
 
@@ -794,7 +794,7 @@ constructor(private sb: SelfbitsAngular) {
 }
 ```
 
-### `SelfbitsAngular: device`
+### SelfbitsAngular: device
 
 ### device.sync()
 
