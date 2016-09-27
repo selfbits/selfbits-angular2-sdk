@@ -1,15 +1,15 @@
-![Project Logo](http://i.imgur.com/TEirSP5.jpg)
+![Project Logo](http://i.imgur.com/mAYkfSt.jpg)
 
 
-# [selfbits-angular2-sdk](https://github.com/selfbits/selfbits-angular2-sdk)
+# [Selfbits Angular2 SDK](https://github.com/selfbits/selfbits-angular2-sdk)
 
-This package allows you to easily integrate the [Selfbits Backend-as-Service](https://www.selfbits.io/#/app/home) into your Angular2 projects.
-Selfbits' Backend-as-Service allows you to skip backend development and focus on what's most important for you: your user-experience.
+This package enables you to easily integrate [Selfbits' Backend-as-Service](https://www.selfbits.io) into your **Angular 2 projects**.
+Selfbits allows you to skip backend development and focus on what's most important for you: your user-experience.
 
 
-Please note that you MUST have a Selfbits BaaS Account and an active Project to use the service. Check out <http://baas.selfbits.io> for more info.
+Please note that you MUST have a Selfbits account and an active Project to use the service. Check out <https://www.selfbits.io> for more info.
 
-**Note**: Check out our sdk for [AnguarJs](https://github.com/selfbits/selfbits-angular-sdk) and various [starter templates](https://github.com/selfbits)!
+**Note**: Check out our sdk for [AnguarJS](https://github.com/selfbits/selfbits-angular-sdk) and various [starter templates](https://github.com/selfbits)!
 
 
 ## Features
@@ -44,11 +44,11 @@ Please note that you MUST have a Selfbits BaaS Account and an active Project to 
       - [Angular 2 Quickstart](#angular-2-quickstart)
       - [Angular 2 Seed](#angular-2-seed)
   - [Webpack Based](#systemjs-based)
-      - [Angular Starter Webpack](#angular-2-starter-webpack)
+      - [Angular 2 Starter Webpack](#angular-2-starter-webpack)
       - [Angular Cli](#angular-cli)
 
 - [API Reference](#api-reference)
-  - [SelfbitsAngular: auth](#selfbitsangular-auth)
+  - [SelfbitsAngular: auth](#-selfbitsangular-auth-)
     - [auth.login(authData)](#auth-login-authdata-)
     - [auth.signup(authData)](#auth-signup-authdata-)
     - [auth.social(providerName)](#auth-social-providername-)
@@ -59,17 +59,17 @@ Please note that you MUST have a Selfbits BaaS Account and an active Project to 
     - [auth.isAuthenticated()](#auth-isauthenticated-)
     - [auth.signupAnonymous()](#auth-signupanonymous-)
 
-  - [SelfbitsAngular: database](#selfbitsangular-database)
+  - [SelfbitsAngular: database](#-selfbitsangular-database-)
     - [database.databaseSchema()](#database-databaseschema-tablename-)
 
-  - [SelfbitsAngular: file](#selfbitsangular-file)
+  - [SelfbitsAngular: file](#-selfbitsangular-file-)
     - [file.get()](#file-getparams-)
     - [file.upload()](#file-uploadparams-)
 
-  - [SelfbitsAngular: user](#selfbitsangular-user)
+  - [SelfbitsAngular: user](#-selfbitsangular-user-)
     - [user.current()](#user-current-)
 
-  - [device](#selfbitsangular-device)
+  - [device](#-selfbitsangular-device-)
     - [device.sync()](#device-sync-)
 
 - [License](#license)
@@ -179,7 +179,7 @@ map:{
     // other libraries
     'rxjs':                       'npm:rxjs',
     'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-    'selfbits-angular2-sdk':      'npm:selfbits-angular2-sdk/dist' // This tells systemJs WHERE to look for the sdk, don't forget /dist!
+    'selfbits-angular2-sdk':      'npm:selfbits-angular2-sdk/dist' // This tells SystemJs WHERE to look for the sdk, don't forget /dist!
     },
 packages: {
     (...)
@@ -187,7 +187,7 @@ packages: {
         main: './index.js',
         defaultExtension: 'js'
     },
-    'selfbits-angular2-sdk':{ // this teels systemJS WHAT to load, in our case the sdk's entry point
+    'selfbits-angular2-sdk':{ // this tells SystemJs WHAT to load, in our case the sdk's entry point
         main:'./index.js',
         defaultExtension: 'js'
     }
@@ -238,7 +238,7 @@ SYSTEM_BUILDER_CONFIG: any = {
 
 All you need to do is to install and setup the sdk as described above (in app.module.ts). Webpack will take care of the rest for us. Here are some templates you can start with.
 
-#### Angular 2 Starter Wepback
+#### Angular 2 Starter Webpack
 This popular [template](https://github.com/AngularClass/angular2-webpack-starter) is created from the people of [Angular Class](https://angularclass.com/) and uses Webpack to bundle the files.
 
 #### Angular CLI
