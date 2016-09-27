@@ -276,7 +276,7 @@ authData | `Object` | `{email:string, password:string}`
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -317,7 +317,7 @@ authData | `Object` | `{email:string, password:string}`
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -348,7 +348,7 @@ Signup as anonymous user
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -372,7 +372,7 @@ constructor(private sb: SelfbitsAngular) {
 
 Sign in **OR** up using social providers. Opens a popup window, that leads the user through the social auth flow.
 
-**Note** Selfbits handles the complete OAuth flow in our backend. Please follow the Setup Guide in your Project > Authentication > Auth Provider
+__Selfbits handles the complete OAuth flow in our backend. Please follow the Setup Guide in your Selfbits Admin Panel under: Project > Authentication > Auth Provider__
 
 #### Parameters
 
@@ -382,7 +382,7 @@ providerName | `string` | String with the Providername in lowercase, e.g. 'faceb
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -404,7 +404,7 @@ constructor(private sb: SelfbitsAngular) {
 
 ### auth.unlink(providerName)
 
-Unlink social providers from a user profile, so it become linkable from other accounts. Does **NOT** remove authentication rights from provider itself.
+Unlink social providers from a user profile, so it become linkable from other accounts. Does **NOT** remove authentication rights from social provider itself.
 
 #### Parameters
 
@@ -414,7 +414,7 @@ providerName | `string` | String with the Providername in lowercase, e.g. 'faceb
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -446,7 +446,7 @@ oldPassword (optional) | `string` | The existing password (only required if a pa
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -467,7 +467,11 @@ constructor(private sb: SelfbitsAngular) {
 
 ### auth.logout()
 
-Logs out the current user, removing Token, UserId and Expires from localStorage.
+Helper Method which removes Token, UserId and Expires from localStorage.
+
+#### Returns
+
+- **Void**
 
 #### Usage
 
@@ -479,7 +483,9 @@ constructor(private sb: SelfbitsAngular) {
 
 ### auth.getUserId()
 
-Returns the ID as String of the logged-in user from localStorage
+#### Returns
+
+- **String** - Returns the UserID as String by retrieving it from the localStorage
 
 #### Usage
 
@@ -497,6 +503,10 @@ constructor(private sb: SelfbitsAngular) {
 Performs a user.current() http request with the current token, in order to check validity. Returns Observable
 
 <boolean>, can be use for angular 2 routing guards</boolean>
+
+#### Returns
+
+- **Observable** - Returns Observable of type boolean
 
 #### Usage
 
@@ -532,18 +542,18 @@ tableName | `string` | Name of the table/collection you want to query
 
 #### Returns
 
-- **Object** - with CRUD Methods
+- **Object** - returns a SelfbitsHttp object
 
 #### Usage
 
 ```javascript
-public todoDb;
+public todoDb:SelfbitsHttp; // typing it provides intelliSense for IDE
 
 constructor(private sb:SelfbitsAngular){
     this.todoDb = this.sb.database.databaseSchema('todo');
 
     this.todoDb.get(getParams).subscribe();
-    this.todoDb.query(params?).subscribe();
+    this.todoDb.query(params).subscribe(); // params optional
     this.todoDb.post(todo).subscribe();
     this.todoDb.put(todo, id).subscribe();
     this.todoDb.delete(id).subscribe();
@@ -564,7 +574,7 @@ getParams | `Object` | `SbGetParams {id: any,deep?: boolean,meta?: boolean}`
 
 ##### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### query(queryParams?)
 
@@ -578,7 +588,7 @@ Param                  | Type     | Details
 
 ##### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### post(data)
 
@@ -592,7 +602,7 @@ data  | `Object` | according to collection created
 
 ##### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### put(data,id)
 
@@ -605,7 +615,7 @@ id    | `string` | id of item to be updated
 
 ##### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### delete(id)
 
@@ -619,66 +629,55 @@ id    | `string` | id of item to be deleted
 
 ##### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 ##### Example Todo
 
 ```javascript
 
 //create a variable for a SelfbitsDatabaseObject
-todoDb;
+private todoDb:SelfbitsHttp;
+private todos =[];
+private myTodo;
 
 // Select the active database and bind the SelfbitsDatabaseObject to a variable
 constructor(private sb: SelfbitsAngular) {
   this.todoDb = this.sb.database.databaseSchema('todo');
-}
 
-// retrieve all todos and bind them to a variable
-todos = this.todo.query();
+  // retrieve all todo and request meta data and deep-linked objects
+  this.todoDb.query({ meta: true, deep: true}).subscribe(res => {
+    this.todos = res.json() // just passing a reference WITHOUT typing, if typing is needed add a map operator before subscribe
+  })
 
-// retrieve single todo by id and bind it to variable
-myTodo =  this.todo.get({ID:"57879806aeb310dc651899ef"});
+  // retrieve single todo by id and bind it to variable
+  this.todo.get({ID:"57879806aeb310dc651899ef"}).subscribe(res => this.myTodo = res.json());
 
-// retrieve all todos and bind them to a variable
-// but this time also request meta data and deep-linked objects
-myTodos = this.todo.query({ meta: true, deep: true});
-
-// save a todo object to the database
-let newTodo = {
-    title: 'Buy Milk',
-    description: 'Please get fresh milk from Wholefoods'
-}
-this.todo.post(newTodo);
-
-// use custom error and result handling
-this.todo.post(todo).subscribe(
-  res => {
-    if (res.status === 200){
-      // Do something
-    }
-    else{
-      // Handle errors here, such as displaying a notification
-    }
+  // save a todo object to the database
+  let newTodo = {
+      title: 'Buy Milk',
+      description: 'Please get fresh milk from Wholefoods'
   }
-);
+  this.todo.post(newTodo).subscribe(res => console.log(res));
 
-// update a todo object in the database
-let updateTodo = {
-    description: 'Please get FRESH milk from Wholefoods'
+  // update a todo object in the database
+  let updateTodo = {
+      description: 'Please get FRESH milk from Wholefoods'
+  }
+  this.todo.put(updateTodo,"57879806aeb310dc651899ef");
+
+  // delete a todo object in the database
+  this.todo.delete("57879806aeb310dc651899ef");
 }
 
-this.todo.put(updateTodo,"57879806aeb310dc651899ef");
-
-// delete a todo object in the database
-this.todo.delete("57879806aeb310dc651899ef");
 ```
+
 
 ### `SelfbitsAngular: file`
 
 ```javascript
 constructor(private sb:SelfbitsAngular){
-    this.sb.file.get(params)
-    this.sb.file.upload(params)
+    this.sb.file.get(params).subscribe()
+    this.sb.file.upload(params).subscribe()
 }
 ```
 
@@ -696,7 +695,7 @@ params.expiresInSeconds | `number` | false    | 900     | JavaScript object
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -741,7 +740,7 @@ params.permissionScope | `string` | false    | user             | The permission
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -774,7 +773,7 @@ constructor(private sb: SelfbitsAngular) {
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
@@ -803,7 +802,7 @@ If an user is authenticeted this function will post user's mobile device informa
 
 #### Returns
 
-- **response** - The HTTP response object from the server.
+- **Observable** - default angular 2 HTTP observable of type Response.
 
 #### Usage
 
