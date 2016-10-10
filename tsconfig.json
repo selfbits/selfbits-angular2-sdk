@@ -24,7 +24,7 @@
 		"./src/services/user.ts",
 		"./src/utils/interfaces.ts",
 		"./src/utils/utils.ts",
-		"./src/utils/tokens"
+		"./src/utils/tokens.ts"
 	],
 	"exclude": [
 		"node_modules",

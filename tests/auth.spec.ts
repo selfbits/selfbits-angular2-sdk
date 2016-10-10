@@ -238,6 +238,7 @@ describe('auth.ts',()=> {
 			expect(window.localStorage.getItem('token')).toEqual('fancyToken');
 			expect(window.localStorage.getItem('userId')).toEqual('fancyUserId');
 			expect(window.localStorage.getItem('expires')).toEqual('fancyExpiration');
+			expect(checkTokenSpy).toHaveBeenCalled();
 
 		}));
 
