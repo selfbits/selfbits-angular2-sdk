@@ -98,6 +98,68 @@ export class SelfbitsFile {
 		}
 	}
 
+
+	public deleteById(fileId:string): Observable<any> {
+		this.checkForToken();
+		if (!fileId) {
+			throw new Error('Delete file failed! Missing fileId!');
+		} else {
+			return this.http.delete(this.baseUrl + this.filePath +'/' + fileId, { headers: this.headers });
+		}
+	}
+
+	public giveUserPermissionToReadFile(fileId:string, userId:string): Observable<any> {
+		this.checkForToken();
+		if (!fileId || !userId) {
+			throw new Error('giveUserPermissionToReadFile failed! Missing fileId or userId!');
+		} else {
+			return this.http.post(
+				this.baseUrl + this.filePath +'/' + fileId+'/acl/user/' + userId,
+				null,
+				{ headers: this.headers }
+			);
+		}
+	}
+
+	public deleteUserPermissionToReadFile(fileId:string, userId:string): Observable<any> {
+		this.checkForToken();
+		if (!fileId || !userId) {
+			throw new Error('deleteUserPermissionToReadFile failed! Missing fileId or userId!');
+		} else {
+			return this.http.delete(
+				this.baseUrl + this.filePath +'/' + fileId + '/acl/user/' + userId, { headers: this.headers }
+			);
+		}
+	}
+
+	public giveRolePermissionToReadFile(fileId:string, roleId:string): Observable<any> {
+		this.checkForToken();
+		if (!fileId || !roleId) {
+			throw new Error('giveRolePermissionToReadFile failed! Missing fileId or roleId!');
+		} else {
+			return this.http.post(
+				this.baseUrl + this.filePath +'/' + fileId + '/acl/user/' + roleId,
+				null,
+				{ headers: this.headers }
+			);
+		}
+
+	}
+
+	public deleteRolePermissionToReadFile(fileId:string, roleId:string): Observable<any> {
+		this.checkForToken();
+		if (!fileId || !roleId) {
+			throw new Error('deleteRolePermissionToReadFile failed! Missing fileId or roleId!');
+		} else {
+			return this.http.delete(
+				this.baseUrl + this.filePath + '/' + fileId + '/acl/user/' + roleId, { headers: this.headers }
+			);
+		}
+	}
+
+
+
+
 	private checkForToken() {
 		if (window.localStorage.hasOwnProperty('token')) {
 			this.headers.set('Authorization', 'Bearer ' + window.localStorage.getItem('token'))
