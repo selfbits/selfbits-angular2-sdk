@@ -72,6 +72,8 @@ export class SelfbitsAuth{
 
 	public social(providerName:string):Subject<Response>{
 
+		this.checkForToken();
+
 		let uniqueState = utils.sbGuid() + utils.sbGuid();
 		let popupUrl = `${this.baseUrl}/${this.socialPath}/${providerName}?sb_app_id=${this.config.APP_ID}&sb_app_secret=${this.config.APP_SECTRET}&state=${uniqueState}`;
 		let authWindow:any;
