@@ -1,6 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
-import {Observable, Subject, Observer} from 'rxjs';
+import {Observable, Subject, Observer, Subscription} from 'rxjs';
 
 import * as utils from '../utils/utils'
 import { SelfbitsAppConfig, SelfbitsAuthConfig } from '../utils/interfaces';
@@ -77,14 +77,14 @@ export class SelfbitsAuth{
 		let uniqueState = utils.sbGuid() + utils.sbGuid();
 		let popupUrl = `${this.baseUrl}/${this.socialPath}/${providerName}?sb_app_id=${this.config.APP_ID}&sb_app_secret=${this.config.APP_SECTRET}&state=${uniqueState}`;
 		let authWindow:any;
+		let pingWindow:Subscription;
 		let response$ = new Subject<Response>();
 
 		if(window.cordova){
-			let authWindow = window.InAppBrowser.open(popupUrl, '_blank', 'location=yes');
+			authWindow = window.cordova.InAppBrowser.open(popupUrl, '_blank', 'location=yes');
 			let isClosed:boolean;
 
-
-			let pingWindow = this.interval.subscribe( res =>{
+			pingWindow = this.interval.subscribe(() =>{
 				if(isClosed === true){
 					isClosed = null;
 					pingWindow.unsubscribe();
@@ -113,7 +113,7 @@ export class SelfbitsAuth{
 		}else{
 			authWindow = window.open(popupUrl, '_blank', 'height=700, width=500');
 
-			let pingWindow = this.interval.subscribe(res =>{
+			pingWindow = this.interval.subscribe(res =>{
 				if(authWindow.closed){
 					pingWindow.unsubscribe();
 					this.getSocialToken(providerName,uniqueState)
