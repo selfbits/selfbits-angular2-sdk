@@ -130,8 +130,6 @@ export class SelfbitsFile {
 				this.baseUrl + this.filePath +'/' + fileId + '/acl/user/' + userId, { headers: this.headers }
 			);
 		}
-
-
 	}
 
 	public giveRolePermissionToReadFile(fileId:string, roleId:string): Observable<any> {

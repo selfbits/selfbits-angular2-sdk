@@ -33,3 +33,12 @@ export const mockExistingFile:SbExistingFile  = {
 	fileId: "18849e2abb34c23a",
 	expiresInSeconds: 600000
 }
+
+export const mockUser  = {
+	userId: "userId_ab134c23a"
+}
+
+export const mockRole  = {
+	name: "mockAdmin"
+}
+
