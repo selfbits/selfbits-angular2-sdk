@@ -21,7 +21,7 @@ export class SelfbitsDevice{
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
 		this.headers.append('sb-app-id',this.config.APP_ID);
-		this.headers.append('sb-app-secret',this.config.APP_SECTRET);
+		this.headers.append('sb-app-secret',this.config.APP_SECRET);
 	}
 
 	public sync():Observable<any>{

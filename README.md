@@ -84,7 +84,7 @@ npm install selfbits-angular2-sdk --save
 ## Setup
 
 Go to your root ngModule (usually app.module.ts).
-Add your Selfbits app credentials to SELFBITSCONFIG and initialize by importing SelfbitsAngularModule.initializeApp(SELFBITSCONFIG)
+Add your Selfbits app credentials to SELFBITSCONFIG and initialize by importing SelfbitsAngularModule.initializeApp (SELFBITSCONFIG).  *You find your Selfbits app credential, when you access the dashboard of your project and click on the gear-icon in the left column, next to your project name.*
 
 ```javascript
 

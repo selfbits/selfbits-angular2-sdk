@@ -27,7 +27,7 @@ export class SelfbitsAuth{
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
 		this.headers.append('sb-app-id',this.config.APP_ID);
-		this.headers.append('sb-app-secret',this.config.APP_SECTRET);
+		this.headers.append('sb-app-secret',this.config.APP_SECRET);
 
 	}
 
@@ -75,7 +75,7 @@ export class SelfbitsAuth{
 		this.checkForToken();
 
 		let uniqueState = utils.sbGuid() + utils.sbGuid();
-		let popupUrl = `${this.baseUrl}/${this.socialPath}/${providerName}?sb_app_id=${this.config.APP_ID}&sb_app_secret=${this.config.APP_SECTRET}&state=${uniqueState}`;
+		let popupUrl = `${this.baseUrl}/${this.socialPath}/${providerName}?sb_app_id=${this.config.APP_ID}&sb_app_secret=${this.config.APP_SECRET}&state=${uniqueState}`;
 		let authWindow:any;
 		let pingWindow:Subscription;
 		let response$ = new Subject<Response>();

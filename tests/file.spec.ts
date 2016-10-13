@@ -1,7 +1,7 @@
 import {TestBed, fakeAsync, inject, tick} from "@angular/core/testing";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {BaseRequestOptions, Http, HttpModule, RequestMethod, ResponseOptions, Response, Headers} from "@angular/http";
-import {TESTCONFIG, TESTURL, mockUploadFile, mockExistingFile} from "./helpers";
+import {TESTCONFIG, TESTURL, mockUploadFile, mockExistingFile, mockUser, mockRole} from "./helpers";
 import {SelfbitsFile} from "../src/services/file";
 import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
@@ -172,6 +172,154 @@ describe('file.ts',()=> {
 			expect(checkTokenSpy).toHaveBeenCalled()
 
 		}));
+
+
+
+		it('should have a working deleteById()',fakeAsync(()=>{
+
+			backend.connections.subscribe((connection: MockConnection) => {
+				expect(connection.request.method).toBe(RequestMethod.Delete);
+
+				let requestPath = `${TESTURL}/api/v1/file/`+mockExistingFile.fileId;
+				expect(connection.request.url).toBe(requestPath);
+
+				let mockResponseBody = { content: 'Testing' };
+				let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
+
+				connection.mockRespond(new Response(response));
+			});
+
+			file.deleteById(mockExistingFile.fileId).subscribe(res => {
+				response = res.json();
+
+			});
+
+			tick();
+			expect(response.content).toBe('Testing');
+			expect(checkTokenSpy).toHaveBeenCalled();
+
+		}));
+
+
+
+
+		it('should have a working giveUserPermissionToReadFile()',fakeAsync(()=>{
+
+			backend.connections.subscribe((connection: MockConnection) => {
+				expect(connection.request.method).toBe(RequestMethod.Post);
+
+				let requestPath = `${TESTURL}/api/v1/file/`+mockExistingFile.fileId
+					+'/acl/user/' + mockUser.userId;
+				expect(connection.request.url).toBe(requestPath);
+
+				let mockResponseBody = { content: 'Testing' };
+				let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
+
+				connection.mockRespond(new Response(response));
+			});
+
+			file.giveUserPermissionToReadFile(mockExistingFile.fileId,mockUser.userId).subscribe(res => {
+				response = res.json();
+
+			});
+
+			tick();
+			expect(response.content).toBe('Testing');
+			expect(checkTokenSpy).toHaveBeenCalled()
+		}));
+
+
+
+		it('should have a working deleteUserPermissionToReadFile()',fakeAsync(()=>{
+
+			backend.connections.subscribe((connection: MockConnection) => {
+				expect(connection.request.method).toBe(RequestMethod.Delete);
+
+				let requestPath = `${TESTURL}/api/v1/file/`+mockExistingFile.fileId
+					+'/acl/user/' + mockUser.userId;
+				expect(connection.request.url).toBe(requestPath);
+
+				console.log(connection.request.url);
+				console.log(requestPath);
+
+				let mockResponseBody = { content: 'Testing' };
+				let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
+
+				connection.mockRespond(new Response(response));
+			});
+
+			file.deleteUserPermissionToReadFile(mockExistingFile.fileId,mockUser.userId).subscribe(res => {
+				response = res.json();
+
+			});
+
+			tick();
+			expect(response.content).toBe('Testing');
+			expect(checkTokenSpy).toHaveBeenCalled();
+
+		}));
+
+
+
+		it('should have a working giveRolePermissionToReadFile()',fakeAsync(()=>{
+
+			backend.connections.subscribe((connection: MockConnection) => {
+				expect(connection.request.method).toBe(RequestMethod.Post);
+
+				let requestPath = `${TESTURL}/api/v1/file/`+mockExistingFile.fileId
+					+'/acl/user/' + mockRole.name;
+				expect(connection.request.url).toBe(requestPath);
+
+				let mockResponseBody = { content: 'Testing' };
+				let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
+
+				connection.mockRespond(new Response(response));
+			});
+
+			file.giveRolePermissionToReadFile(mockExistingFile.fileId,mockRole.name).subscribe(res => {
+				response = res.json();
+
+			});
+
+			tick();
+			expect(response.content).toBe('Testing');
+			expect(checkTokenSpy).toHaveBeenCalled()
+		}));
+
+
+
+		it('should have a working deleteRolePermissionToReadFile()',fakeAsync(()=>{
+
+			backend.connections.subscribe((connection: MockConnection) => {
+				expect(connection.request.method).toBe(RequestMethod.Delete);
+
+				let requestPath = `${TESTURL}/api/v1/file/`+mockExistingFile.fileId
+					+'/acl/user/' + mockRole.name;
+				expect(connection.request.url).toBe(requestPath);
+
+				console.log(connection.request.url);
+				console.log(requestPath);
+
+				let mockResponseBody = { content: 'Testing' };
+				let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
+
+				connection.mockRespond(new Response(response));
+			});
+
+			file.deleteRolePermissionToReadFile(mockExistingFile.fileId,mockRole.name).subscribe(res => {
+				response = res.json();
+
+			});
+
+			tick();
+			expect(response.content).toBe('Testing');
+			expect(checkTokenSpy).toHaveBeenCalled();
+
+		}));
+
+
+
+
 	})
 
 

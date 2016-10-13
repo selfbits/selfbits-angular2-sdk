@@ -50,7 +50,7 @@ export const SelfbitsSetup = (appConfig: SelfbitsAppConfig): any => {
 export class SelfbitsAngularModule{
 	static initializeApp(config:SelfbitsAppConfig):ModuleWithProviders{
 
-		if(config.BASE_URL.trim().length === 0 || config.APP_ID.trim().length === 0 || config.APP_SECTRET.trim().length === 0) {
+		if(config.BASE_URL.trim().length === 0 || config.APP_ID.trim().length === 0 || config.APP_SECRET.trim().length === 0) {
 			console.error('-----------------------------------------------------');
 			console.error('SelfbitsAppConfig in root ngModule is NOT configured!');
 			console.error('-----------------------------------------------------');
