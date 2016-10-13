@@ -12,7 +12,7 @@ export const TESTURL:string = 'www.test.io';
 export const TESTCONFIG:SelfbitsAppConfig = {
 	BASE_URL: 'www.test.io',
 	APP_ID: 'fancyId',
-	APP_SECTRET: 'fancySecret'
+	APP_SECRET: 'fancySecret'
 };
 
 export const TESTAUTHSUCESSRES:SbAuthSucessResponse = {

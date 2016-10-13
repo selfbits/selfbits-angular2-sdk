@@ -5,7 +5,7 @@ import {TESTHEADERS, TESTURL, TESTCONFIG, TESTAUTHSUCESSRES} from "./helpers";
 
 import * as utils from '../src/utils/utils'
 import {SelfbitsAuth} from "../src/services/auth";
-import {SelfbitsAuthConfig} from "../src/utils/interfaces";
+import {SelfbitsAuthConfig, SelfbitsAppConfig} from "../src/utils/interfaces";
 import {SELFBITS_CONFIG} from "../src/utils/tokens";
 
 describe('auth.ts',()=> {
@@ -211,7 +211,7 @@ describe('auth.ts',()=> {
 
 			let windowStub = sinon.stub(window,'open',(url:string)=>{
 				let genGuild = guidSpy.getCall(0).returnValue + guidSpy.getCall(1).returnValue;
-				let popupUrl = `${TESTCONFIG.BASE_URL}/api/v1/oauth/facebook?sb_app_id=${TESTCONFIG.APP_ID}&sb_app_secret=${TESTCONFIG.APP_SECTRET}&state=${genGuild}`;
+				let popupUrl = `${TESTCONFIG.BASE_URL}/api/v1/oauth/facebook?sb_app_id=${TESTCONFIG.APP_ID}&sb_app_secret=${TESTCONFIG.APP_SECRET}&state=${genGuild}`;
 
 				expect(url).toEqual(popupUrl);
 				backend.connections.subscribe( (connection:MockConnection)=>{
@@ -241,6 +241,62 @@ describe('auth.ts',()=> {
 			expect(checkTokenSpy).toHaveBeenCalled();
 
 		}));
+
+
+		it('isAuthenticated() should return check user state',fakeAsync(()=>{
+
+			backend.connections.subscribe( (connection:MockConnection)=>{
+				expect(connection.request.method).toBe(RequestMethod.Get);
+				expect(connection.request.url).toEqual('www.test.io/api/v1/user');
+
+				let res = {
+					status:200
+				};
+
+
+				let response = new ResponseOptions({status:200});
+				connection.mockRespond(new Response(response));
+
+			});
+
+			auth.isAuthenticated().subscribe(res => {
+				response = res;
+			});
+
+			tick();
+
+			expect(response).toBeTruthy();
+			expect(checkTokenSpy).toHaveBeenCalled();
+		}))
+
+
+
+
+
+		it("SelfbitsAppConfig requires no APP_SECRET", function() {
+
+			var Mock_SELFBITSCONFIG_1 : SelfbitsAppConfig = {
+				BASE_URL: 'YourSbAppDomain',
+				APP_ID: 'yourSbAppId',
+				APP_SECRET: 'yourSbAppSecret'
+			};
+
+			var Mock_SELFBITSCONFIG_2 : SelfbitsAppConfig = {
+				BASE_URL: 'YourSbAppDomain',
+				APP_ID: 'yourSbAppId'
+			};
+
+
+			expect(Mock_SELFBITSCONFIG_1.APP_SECRET).toBe('yourSbAppSecret');
+			expect(Mock_SELFBITSCONFIG_2.APP_SECRET).toBe(undefined);
+
+
+
+
+		});
+
+
+
 
 		it('isAuthenticated() should return check user state',fakeAsync(()=>{
 
