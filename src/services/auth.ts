@@ -145,9 +145,7 @@ export class SelfbitsAuth{
 		this.checkForToken();
 		let isAuth = new Observable<boolean>((observer:Observer<boolean>) => {
 			this.http.get(`${this.baseUrl}/${this.userPath}`,{headers: this.headers}).subscribe(res => {
-				console.log(res);
 				if (res.status === 200){
-					console.log(res.status);
 					observer.next(true);
 					observer.complete();
 				}else{

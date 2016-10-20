@@ -47,13 +47,10 @@ export class SelfbitsFile {
 			)
 	}
 
-
 	private initiateUpload(uploadFile: SbUploadFile): Observable<any> {
 		if (!uploadFile || !uploadFile.file) {
 			throw new Error('Upload initialization failed! Missing file param!');
 		} else {
-
-			let file = uploadFile.file;
 			let data = {
 				'filePath': uploadFile.filePath || uploadFile.fileName,
 				'permissionScope': uploadFile.permissionScope || 'user'
@@ -62,7 +59,6 @@ export class SelfbitsFile {
 			return this.http.post(this.baseUrl + this.filePath, JSON.stringify(data), { headers: this.headers })
 		}
 	}
-
 
 	private executeUpload(amazonPutUrl: string, file: any): Observable<any> {
 		let amazonRequestHeaders = new Headers({

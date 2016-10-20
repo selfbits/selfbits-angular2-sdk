@@ -34,7 +34,6 @@ export class SelfbitsPush{
 				this.push = window.PushNotification.init(config);
 				this.push.on('registration', (data:any) => {
 					this.pushRegistrationData = data;
-					console.log('registered Push');
 					observer.next(data);
 					observer.complete();
 				});
@@ -42,7 +41,6 @@ export class SelfbitsPush{
 					this.push$.next(data);
 				});
 				this.push.on('error', (err:any) =>{
-					log.log(err);
 					observer.error(err)
 				});
 			})
