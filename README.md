@@ -99,7 +99,7 @@ const SELFBITSCONFIG = {
      NOTE: on public clients we highly recommend to set Allowed Origins
      in your Selfbits BaaS Project Dashboard instead of using the Secret
   */  
-    APP_SECTRET:'yourSbAppSecret',
+    APP_SECRET:'yourSbAppSecret',
 };
 
 @NgModule({
